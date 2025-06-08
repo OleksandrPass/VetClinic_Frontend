@@ -9,6 +9,8 @@ import DentalCare from "./pages/DentalCare";
 import Grooming from "./pages/Grooming";
 import LaboratoryTests from "./pages/LaboratoryTests";
 import NutritionalCounselling from "./pages/NutritionalCounselling";
+import RequestAppointment from "./pages/RequestAppointment";
+import PageRequestSuccess from "./pages/PageRequestSuccess";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="/grooming" element={<Grooming />} />
           <Route path="/lab-tests" element={<LaboratoryTests />} />
           <Route path="/nutrition" element={<NutritionalCounselling />} />
+          <Route path="appointment-request" element={<RequestAppointment />} />
+          <Route path="/request-success" element={<PageRequestSuccess/>} />
         </Routes>
       </div>
     </Router>
