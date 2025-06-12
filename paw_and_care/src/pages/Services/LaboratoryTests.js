@@ -13,7 +13,7 @@ import '../../assets/Services/paw-svgrepo-com 1.png';
 const LaboratoryTests = () => {
     return (
         <div>
-            <Header />
+
 
             <Link to="/services" className="left-arrow-link" />
 
@@ -49,7 +49,7 @@ const LaboratoryTests = () => {
                 <AppointmentButton/>
             </div>
 
-            <Footer />
+
         </div>
     )
 }

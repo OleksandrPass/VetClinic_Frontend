@@ -1,0 +1,56 @@
+﻿.pet-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 16px;
+    margin: 16px;
+    max-width: 300px;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.pet-image img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.pet-info input {
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.pet-info h3 {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+.pet-info p {
+    margin: 4px 0;
+}
+
+button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #f0f0f0;
+}
+
+.save-btn {
+    background-color: #4CAF50;
+    color: white;
+    margin-right: 8px;
+}
+
+.cancel-btn {
+    background-color: #ccc;
+}

@@ -19,7 +19,6 @@ import MoreButton from "../../components/buttons/moreButton";
 const Main = () => {
   return (
     <div>
-      <Header/>
 
       <div className="ad-container">
         <h1>Compassionate Care for Your Pets
@@ -103,8 +102,6 @@ const Main = () => {
             </div>
           </div>
         </div>
-
-        <Footer/>
 
       </div>
 

@@ -13,16 +13,20 @@ import LogIn from "./pages/Login/LogIn";
 import SignUp from "./pages/SignUp/SignUp";
 import PasswordReset from "./pages/PasswordRecovery/PasswordReset";
 import PasswordRecoveryRequest from "./pages/PasswordRecovery/PasswordRecoveryRequest";
-import Profile from "./pages/Profile/Profile";
 import PasswordRecoverySuccess from "./pages/PasswordRecovery/PasswordRecoverySuccess";
 import AccountDeletion from "./pages/AccountDeletion/AccountDeletion";
 import PageDeletionSuccess from "./pages/AccountDeletion/PageDeletionSuccess";
 import PetPage from "./pages/Profile/profilePages/PetPage";
+import ProfileLayout from "./Layouts/ProfileLayout";
+import Header from "./components/header/header";
+import Footer from "./components/footer/footer";
+
 
 function App() {
   return (
     <Router>
       <div>
+        <Header/>
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/general-checkups" element={<GeneralCheckUps />} />
@@ -41,11 +45,12 @@ function App() {
           <Route path="/password-reset-success" element={<PasswordRecoverySuccess />} />
           <Route path="/remove-account" element={<AccountDeletion />} />
           <Route path="/remove-account-success" element={<PageDeletionSuccess />} />
-          <Route path="/profile/pets" element={<PetPage />} />
-          {/*<Route path="/profile/medical-records" element={<MedicalRecords />} />*/}
-          {/*<Route path="/profile/visits" element={<Visits />} />*/}
+          <Route path="/profile" element={<ProfileLayout />}>
+            <Route path="pets" element={<PetPage />} />
+          </Route>
 
         </Routes>
+        <Footer/>>
       </div>
     </Router>
   );

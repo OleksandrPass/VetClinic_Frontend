@@ -9,9 +9,6 @@ import '../../assets/SVG/pointer-about-us.svg';
 const AboutUs = () => {
   return (
         <div>
-
-            <Header />
-
           <div className="about-container">
               <h1>About Us</h1>
               <h3>Committed to Your Pet's Health and Happiness.</h3>
@@ -47,9 +44,6 @@ const AboutUs = () => {
             </div>
             </div>
           </div>
-
-            <Footer />
-
         </div>
     )
 }

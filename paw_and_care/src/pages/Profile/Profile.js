@@ -9,7 +9,6 @@ import dog from '../../assets/Pet profile/Labrador.jpg';
 const Profile = () => {
   return (
     <div className={'pet-page'}>
-      <Header/>
       <div className={'main-section'}>
         <h1 >Profile</h1>
         <div className={'grid-container'}>
@@ -23,7 +22,6 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <Footer/>
     </div>
   )
 }

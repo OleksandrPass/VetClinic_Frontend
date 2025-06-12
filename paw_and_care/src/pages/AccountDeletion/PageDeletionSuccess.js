@@ -8,7 +8,7 @@ const PageDeletionSuccess = () => {
 
   return (
     <div>
-      <Header />
+
       <div className="content">
         <div className={"content-container"}>
           <img src={tick} alt="tick-circle" />
@@ -19,7 +19,6 @@ const PageDeletionSuccess = () => {
           <Link to={"/"}><button className={"back-home"}>Back Home</button></Link>
         </div>
       </div>
-      <Footer />
     </div>
   );
 

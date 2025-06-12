@@ -75,7 +75,7 @@ const Header = () => {
 
                   <div className="dropdown-divider"></div>
 
-                  <Link to="/profile" className="dropdown-item" onClick={e => e.stopPropagation()}>
+                  <Link to="/profile/pets" className="dropdown-item" onClick={e => e.stopPropagation()}>
                     My Profile
                   </Link>
                   <button className="dropdown-item" onClick={logout}>Log out</button>

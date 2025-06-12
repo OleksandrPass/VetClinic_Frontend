@@ -38,7 +38,6 @@ const PasswordResetRequest = () => {
 
   return (
     <div>
-      <Header />
       <div className="password-recovery-container">
         <form onSubmit={handleSubmit}>
           <h1>Reset Password</h1>
@@ -55,7 +54,6 @@ const PasswordResetRequest = () => {
           {message && <p>{message}</p>}
         </form>
       </div>
-      <Footer />
     </div>
   );
 };

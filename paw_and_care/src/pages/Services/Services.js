@@ -14,7 +14,7 @@ import  '../../assets/Services/Vector.png';
 const Services = () => {
     return (
         <div>
-            <Header/>
+
 
             <div className="full-services-container">
                 <h2>What we offer</h2>
@@ -46,7 +46,7 @@ const Services = () => {
                 </div>
             </div>
 
-            <Footer/>
+
 
         </div>
     );

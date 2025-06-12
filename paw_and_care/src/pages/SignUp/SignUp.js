@@ -71,7 +71,6 @@ const SignUp = () => {
 
   return (
     <div>
-      <Header/>
     <div className="signup-container">
       <main className="signup-main">
         <h1 className="signup-title">Sign Up</h1>
@@ -144,7 +143,6 @@ const SignUp = () => {
         </form>
       </main>
     </div>
-      <Footer/>
     </div>
   );
 }
