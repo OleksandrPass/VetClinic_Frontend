@@ -1,29 +1,31 @@
-﻿import React, { useState } from 'react';
-import './Profile.css';
+﻿import React from "react";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
+import SideMenu from "../../components/sideMenu/sideMenu";
+import './Profile.css'
+import dog from '../../assets/Pet profile/Labrador.jpg';
 
-const PersonalAccount = () => {
-  const [activeTab, setActiveTab] = useState('portfolio');
 
-  const Section = ({ title, children }) => (
-    <div className="sidebar-section">
-      <h3>{title}</h3>
-      <div className="section-content">{children}</div>
-    </div>
-  );
-
+const Profile = () => {
   return (
-    <div>
-      <Header />
-      <div className="main-section">
-        <h1>Profile</h1>
-        <div className={"menu-container"}>
+    <div className={'pet-page'}>
+      <Header/>
+      <div className={'main-section'}>
+        <h1 >Profile</h1>
+        <div className={'grid-container'}>
+          <SideMenu/>
+          <div className={'pet-card'}>
+            <img src={dog} alt={dog} />
+            <p>Name</p>
+            <p>Species:</p>
+            <p>Breed:</p>
+            <p>Gender:</p>
+          </div>
         </div>
       </div>
-      <Footer />
+      <Footer/>
     </div>
   )
 }
 
-export default PersonalAccount;
+export default Profile;

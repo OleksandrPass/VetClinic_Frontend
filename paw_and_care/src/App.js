@@ -17,6 +17,7 @@ import Profile from "./pages/Profile/Profile";
 import PasswordRecoverySuccess from "./pages/PasswordRecovery/PasswordRecoverySuccess";
 import AccountDeletion from "./pages/AccountDeletion/AccountDeletion";
 import PageDeletionSuccess from "./pages/AccountDeletion/PageDeletionSuccess";
+import PetPage from "./pages/Profile/profilePages/PetPage";
 
 function App() {
   return (
@@ -37,10 +38,12 @@ function App() {
           <Route path="/sign-up" element={<SignUp/>} />
           <Route path="/password-reset-request" element={<PasswordRecoveryRequest />} />
           <Route path="/auth/reset-password/:token" element={<PasswordReset />} />
-          <Route path="/profile" element={<Profile/>} />
           <Route path="/password-reset-success" element={<PasswordRecoverySuccess />} />
           <Route path="/remove-account" element={<AccountDeletion />} />
           <Route path="/remove-account-success" element={<PageDeletionSuccess />} />
+          <Route path="/profile/pets" element={<PetPage />} />
+          {/*<Route path="/profile/medical-records" element={<MedicalRecords />} />*/}
+          {/*<Route path="/profile/visits" element={<Visits />} />*/}
 
         </Routes>
       </div>

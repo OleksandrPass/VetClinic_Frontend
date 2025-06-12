@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import Header from "../../../components/header/header";
 import Footer from "../../../components/footer/footer";
-import SideMenu from "../../../components/SideMenu/SideMenu";
+import SideMenu from "../../../components/sideMenu/sideMenu";
 import '../Profile.css'
 import dog from '../../../assets/Pet profile/Labrador.jpg';
 
