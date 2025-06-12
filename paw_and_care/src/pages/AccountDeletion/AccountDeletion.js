@@ -1,5 +1,5 @@
-﻿import Header from "../components/header";
-import Footer from "../components/footer";
+﻿import Header from '../../components/header/header';
+import Footer from '../../components/footer/footer';
 import './AccountDeletion.css'
 import React from "react";
 import { Link } from "react-router-dom";

@@ -2,7 +2,7 @@
     margin-top: 160px;
     width: auto;
     height: 621px;
-    background-image: url("../assets/Лендинги/155657.jpg");
+    background-image: url("../../assets/Лендинги/155657.jpg");
     /*display: flow;*/
     background-repeat: no-repeat;
     background-size: cover;
@@ -29,7 +29,7 @@
 }
 
 .about-container ul {
-    list-style-image: url("../assets/SVG/pointer-about-us.svg");
+    list-style-image: url("../../assets/SVG/pointer-about-us.svg");
     margin-left: 231px;
     font-size: 20px;
     line-height: 30px;
@@ -111,7 +111,7 @@
     border-radius: 20px;
     background-image:
             linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)),
-            url("../assets/Img Docktor/Doktor 3.jpg.jpg");
+            url("../../assets/Img Docktor/Doktor 3.jpg.jpg");
     /*background-size: fill;*/
     background-repeat: no-repeat;
     background-position: -250px center;
@@ -135,7 +135,7 @@
     border-radius: 20px;
     background-image:
             linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)),
-            url("../assets/Img Docktor/Doktor 2.jpg.jpg");
+            url("../../assets/Img Docktor/Doktor 2.jpg.jpg");
     /*background-size: fill;*/
     background-repeat: no-repeat;
     background-size: 200%;
@@ -160,7 +160,7 @@
     border-radius: 20px;
     background-image:
             linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)),
-            url("../assets/Img Docktor/Doktor 1.jpg.jpg");
+            url("../../assets/Img Docktor/Doktor 1.jpg.jpg");
     /*background-size: fill;*/
     background-repeat: no-repeat;
     background-size: 190%;

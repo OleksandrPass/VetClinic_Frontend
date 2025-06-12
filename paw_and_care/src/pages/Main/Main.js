@@ -1,7 +1,7 @@
 ﻿import Header from '../../components/header/header';
 import AppointmentButton from "../../components/buttons/appointmentButton";
 import './Main.css';
-import './Services.css';
+import '../Services/Services.css';
 import '../../assets/Лендинги/2202.q702.029.F.m005.c7.veterinary.jpg';
 import '../../assets/Services/2149100168.jpg';
 import '../../assets/Services/2147928582.jpg';

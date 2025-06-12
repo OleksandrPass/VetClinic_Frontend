@@ -1,14 +1,15 @@
 ﻿import { Link } from 'react-router-dom';
-import Header from '../components/header';
+import Header from '../../components/header/header';
+import Footer from '../../components/footer/footer';
 import './Services.css';
-import '../assets/Services/2149100168.jpg';
-import '../assets/Services/2147928582.jpg';
-import '../assets/Services/Dental.jpg';
-import  '../assets/Services/Grooming.jpg';
-import  '../assets/Services/Laboratory Tests.jpg';
-import  '../assets/Services/Nutritional Counseling.jpg';
-import  '../assets/Services/Vector.png';
-import Footer from '../components/footer';
+import '../../assets/Services/2149100168.jpg';
+import '../../assets/Services/2147928582.jpg';
+import '../../assets/Services/Dental.jpg';
+import  '../../assets/Services/Grooming.jpg';
+import  '../../assets/Services/Laboratory Tests.jpg';
+import  '../../assets/Services/Nutritional Counseling.jpg';
+import  '../../assets/Services/Vector.png';
+
 
 const Services = () => {
     return (

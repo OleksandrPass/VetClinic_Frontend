@@ -1,10 +1,10 @@
 ﻿import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Header from '../components/header';
-import Footer from '../components/footer';
-import '../assets/Лендинги/155657.jpg';
+import Header from '../../components/header/header';
+import Footer from '../../components/footer/footer';
+import '../../assets/Лендинги/155657.jpg';
 import './AboutUs.css';
-import '../assets/SVG/pointer-about-us.svg';
+import '../../assets/SVG/pointer-about-us.svg';
 
 const AboutUs = () => {
   return (

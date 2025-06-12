@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
-import Header from '../components/header';
-import AppointmentButton from "../components/appointmentButton";
+import Header from '../../components/header/header';
+import Footer from '../../components/footer/footer';
+import AppointmentButton from "../../components/buttons/appointmentButton";
 import './Services.css';
-import '../assets/Services/2149100168.jpg';
-import '../assets/Services/d3ef6479d835713b77354aa668019d1b4720b038.jpg';
-import '../assets/Services/Vector2.png';
-import '../assets/Services/check-mark-svgrepo-com 1.png';
-import '../assets/Services/paw-svgrepo-com 1.png';
-import Footer from '../components/footer';
+import '../../assets/Services/2149100168.jpg';
+import '../../assets/Services/d3ef6479d835713b77354aa668019d1b4720b038.jpg';
+import '../../assets/Services/Vector2.png';
+import '../../assets/Services/check-mark-svgrepo-com 1.png';
+import '../../assets/Services/paw-svgrepo-com 1.png';
 
 const Vaccinations = () => {
     return (
