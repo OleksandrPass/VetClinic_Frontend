@@ -19,6 +19,8 @@ import AccountDeletion from "./pages/AccountDeletion";
 import PageDeletionSuccess from "./pages/PageDeletionSuccess";
 import RequestAppointment from "./pages/RequestAppointment";
 import PageRequestSuccess from "./pages/PageRequestSuccess";
+import WriteReview from "./pages/WriteReview";
+import PageReviewSubmitted from "./pages/PageReviewSubmitted";
 
 function App() {
   return (
@@ -45,6 +47,8 @@ function App() {
           <Route path="/remove-account-success" element={<PageDeletionSuccess />} />
           <Route path="/appointment-request" element={<RequestAppointment />} />
           <Route path="/request-success" element={<PageRequestSuccess />} />
+          <Route path="/write-a-review" element={<WriteReview />} />
+          <Route path="/review-submitted" element={<PageReviewSubmitted />} />
 
         </Routes>
       </div>
