@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
-import dayjs, { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 import "dayjs/locale/en";
 import weekday from "dayjs/plugin/weekday";
 import localeData from "dayjs/plugin/localeData";
@@ -36,7 +36,6 @@ export default function AppointmentCalendar(props) {
         setSelectedTime,
     } = props;
     const [displayedMonth, setDisplayedMonth] = useState(dayjs().startOf("month"));
-    const today = dayjs().startOf("month");
     const dayOfWeekFormatter = (day) => day.format("ddd");
 
     const calendarRef = useRef(null);
