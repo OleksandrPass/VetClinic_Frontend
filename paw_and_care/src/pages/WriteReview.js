@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import './WriteReview.css';
-import { Link, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import CustomSelect from "../components/CustomSelect";
 import StarRating from "../components/StarRating";
 
