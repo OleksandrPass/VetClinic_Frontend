@@ -17,6 +17,8 @@ import Profile from "./pages/Profile";
 import PasswordRecoverySuccess from "./pages/PasswordRecoverySuccess";
 import AccountDeletion from "./pages/AccountDeletion";
 import PageDeletionSuccess from "./pages/PageDeletionSuccess";
+import RequestAppointment from "./pages/RequestAppointment";
+import PageRequestSuccess from "./pages/PageRequestSuccess";
 
 function App() {
   return (
@@ -41,6 +43,8 @@ function App() {
           <Route path="/password-reset-success" element={<PasswordRecoverySuccess />} />
           <Route path="/remove-account" element={<AccountDeletion />} />
           <Route path="/remove-account-success" element={<PageDeletionSuccess />} />
+          <Route path="/appointment-request" element={<RequestAppointment />} />
+          <Route path="/request-success" element={<PageRequestSuccess />} />
 
         </Routes>
       </div>
