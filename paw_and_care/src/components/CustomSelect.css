@@ -1,0 +1,78 @@
+.custom-select {
+    position: relative;
+    width: 100%; /* Наследует от .form-group.single */
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.select-header {
+    height: 55px;
+    padding: 0 40px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    background: white;
+    position: relative; /* чтобы внутри позиционировать стрелочку */
+}
+
+.arrow-icon {
+    width: 26px;
+    height: 26px;
+    transition: transform 0.3s ease;
+    position: absolute;
+    top: 25%;
+    right: 12px; /* отступ от правого края */
+    transform: rotate(180deg) translateY(-50%);
+    cursor: pointer;
+}
+.arrow.open .arrow-icon {
+    transform: rotate(0deg);
+}
+
+.select-options {
+    position: absolute;
+    top: 100%; /* открывается прямо под селектом */
+    left: 0;
+    width: 100%; /* фиксированная ширина */
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    box-sizing: border-box;
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+
+.select-option {
+    height: 54px;
+    padding: 0 16px 0 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 20px;
+    margin-bottom: 0;
+}
+.select-option:last-child {
+    margin-bottom: 20px; /* увеличенный отступ у последней */
+}
+
+.select-option:hover{
+    color: #6390B8;
+    font-weight: 500;
+}
+.select-option.selected {
+    color: #086788;
+    font-weight: 500;
+}
