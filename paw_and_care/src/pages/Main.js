@@ -8,6 +8,7 @@ import '../assets/Services/2147928582.jpg';
 import '../assets/Services/Dental.jpg';
 import Footer from '../components/footer';
 import AllServicesButton from "../components/allServicesButton";
+import CustomerReviewsCarousel from '../components/CustomerReviewsCarousel';
 import cat from "../assets/Services/cat.png";
 import pet_house from "../assets/SVG/pet-house.svg";
 import smart_tracking from "../assets/SVG/smart-tracking.svg";
@@ -93,16 +94,7 @@ const Main = () => {
           </div>
         </div>
 
-        <div className="reviews-container">
-          <h3>Customer Reviews</h3>
-          <div className="navigational-buttons">
-          </div>
-          <div className="reviews-collection">
-            <div className="review-cards">
-
-            </div>
-          </div>
-        </div>
+        <CustomerReviewsCarousel />
 
         <Footer/>
 
