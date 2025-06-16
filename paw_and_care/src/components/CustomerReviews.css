@@ -1,0 +1,220 @@
+.review-card {
+    background-color: #D8F0FF;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 360px;
+    height: auto; /* уже есть */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    overflow: visible; /* было hidden — убираем */
+}
+
+.review-header {
+    margin-bottom: 0; /* Отступ под review-header - теперь управляется явно */
+}
+
+.reviewer-name {
+    font-family: 'Inter', sans-serif; /* Шрифт для имени */
+    font-weight: 600; /* Жирность шрифта */
+    font-size: 24px; /* Размер шрифта */
+    line-height: 30px; /* Высота строки */
+    text-align: left; /* Выравнивание текста имени по левому краю */
+    margin-bottom: 15px; /* Отступ под именем */
+    color: #333;
+}
+
+.star-rating {
+    width: 96px; /* Ширина поля со звездочками */
+    height: 15.216897964477539px; /* Высота поля со звездочками */
+    display: flex; /* Для выравнивания звезд в ряд */
+    gap: 4px; /* Отступ между звездами */
+    align-items: center; /* Центрирование звезд по вертикали внутри их контейнера */
+    margin-bottom: 8px; /* Уменьшен отступ под звездочками */
+}
+
+.star-icon {
+    width: 16px; /* Пересчитанный размер иконки, чтобы 5 звезд с 4px gap вписались в 96px */
+    height: 16px; /* Сохраняем пропорции */
+    object-fit: contain; /* Сохраняет пропорции изображения */
+}
+
+.review-date {
+    font-size: 0.85em;
+    color: #777;
+    margin-bottom: 8px; /* Уменьшен отступ под датой */
+}
+
+.review-text {
+    font-family: 'Inter', sans-serif; /* Шрифт для текста отзыва */
+    font-weight: 400; /* Жирность шрифта */
+    font-size: 20px; /* Размер шрифта */
+    line-height: 1.5em; /* Уменьшен отступ между строками, чтобы карточки лучше умещались */
+    letter-spacing: -0.02em; /* Межбуквенный интервал (-2%) */
+    color: #000; /* Цвет текста отзыва - черный */
+    flex-grow: 1; /* Позволяет тексту занимать доступное пространство */
+}
+
+
+/* CustomerReviewsCarousel styles (основной контейнер карусели) */
+.reviews-section-wrapper {
+    /* Удалены position: absolute, top, left, transform */
+    min-height: 708px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Выравнивание по верхнему краю */
+    width: 100%; /* Заданная ширина */
+    box-sizing: border-box;
+    overflow: hidden; /* Скрывает содержимое, выходящее за границы */
+    background-color: #FCFBFB; /* Цвет фона, перенесенный из reviews-container */
+    flex-direction: column; /* Элементы внутри будут расположены вертикально */
+    margin: 0 auto 100px auto; /* Центрируем по горизонтали и добавляем отступ снизу */
+}
+
+.reviews-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: none; /* Убрана тень */
+    border-radius: 0; /* Убраны закругленные края */
+    position: relative; /* Чтобы дочерние абсолютно позиционированные элементы (кнопки) работали относительно него */
+    overflow: hidden; /* Скрывает контент, который выходит за границы, для правильной работы карусели */
+    padding: 40px 20px; /* Добавлен padding для содержимого */
+    padding-top: 98px; /* Заголовок и стрелки на 98px ниже */
+}
+
+.reviews-container h3 {
+    font-size: 2.2em;
+    color: #333;
+    margin-top: 0; /* Убираем стандартный margin-top */
+    margin-bottom: 30px; /* Отступ под заголовком */
+    text-align: left; /* Выравнивание по левому краю */
+    box-sizing: border-box; /* Учитываем padding в ширине */
+    margin-left: 0; /* Удаляем старое выравнивание */
+    width: 100%; /* Теперь занимает всю ширину от .reviews-inner */
+}
+
+.navigational-buttons {
+    position: absolute; /* Абсолютное позиционирование относительно .reviews-container */
+    top: 98px; /* Обновлено: Выравнивание по top, соответствует заголовку */
+    right: 199px; /* Рассчитано как 1920px - (1633px + ширина_группы_кнопок) */
+    display: flex;
+    gap: 10px; /* Уменьшен отступ между кнопками */
+    z-index: 10;
+}
+
+.nav-button {
+    background-color: #e0e0e0; /* Постоянный серый фон */
+    border: none;
+    border-radius: 19.5px; /* Заданный радиус */
+    width: 39px; /* Заданная ширина */
+    height: 39px; /* Заданная высота */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: none; /* Удалена тень */
+    transition: background-color 0.3s ease;
+    padding: 11px 10px; /* Заданные отступы */
+    box-sizing: border-box; /* Включаем padding в общие размеры */
+}
+
+.nav-button.active-scroll {
+    background-color: #6390B8; /* Цвет фона, когда прокрутка возможна */
+}
+
+.nav-button:disabled {
+    cursor: not-allowed;
+}
+
+.nav-icon {
+    width: 24px; /* Размер иконки стрелки */
+    height: 24px;
+    object-fit: contain;
+}
+
+.reviews-collection {
+    padding-left: 0;
+    width: 100%;
+    overflow-x: scroll; /* Включение горизонтальной прокрутки */
+    scroll-snap-type: x mandatory; /* Привязка к карточкам при прокрутке */
+    padding-bottom: 0; /* Отступ убран */
+    display: flex; /* Расположение карточек в ряд */
+    gap: 10px; /* Отступ между карточками */
+    padding-right: 370px; /* Добавлен отступ справа, чтобы последняя карточка полностью показывалась */
+    margin-top: 54px; /* 84px от заголовка (84 - 30 margin-bottom заголовка) */
+}
+
+.reviews-collection::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+/* Контейнер для карточек внутри reviews-collection */
+/* Используется для обеспечения прокрутки и отступа */
+.review-cards-wrapper {
+    padding-left: 246px;/* Отступ перед первой карточкой, чтобы выровнять ее с заголовком */
+    display: flex;
+    gap: 10px; /* Отступ между карточками */
+    flex-grow: 1; /* Позволяет ему растягиваться, если карточек мало */
+}
+
+/* Стили для кнопки "Write a Review" */
+.write-review-link {
+    text-decoration: none; /* Убираем подчеркивание от Link */
+    display: inline-block; /* Позволяет применять к ней блочные свойства, такие как margin */
+    margin-top: 60px;
+}
+
+.write-review-button {
+    border-radius: 10px; /* Скругление углов */
+    width: 176px; /* Ширина кнопки */
+    height: 50px; /* Высота кнопки */
+    background-color: white;
+    border: 1px solid #f05a00; /* Граница кнопки */
+    color: #F05508;
+    font-weight: 400;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif; /* Шрифт кнопки */
+    line-height: 20px;
+    cursor: pointer;
+    padding: 15px; /* Внутренние отступы */
+    box-sizing: border-box; /* Учитывает padding и border в общей ширине/высоте */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Плавный переход при наведении */
+    display: flex; /* Для центрирования текста, если нужно */
+    justify-content: center; /* Центрирование текста по горизонтали */
+    align-items: center; /* Центрирование текста по вертикали */
+}
+
+.write-review-button:hover {
+    color: white;
+    background-color: #ED804FEB;
+}
+
+.write-review-button:active {
+    background-color: #F05508;
+}
+
+/* Стили сообщений о загрузке и ошибке */
+.loading-message, .error-message {
+    text-align: center;
+    font-size: 1.2em;
+    padding: 20px;
+    color: #666;
+}
+
+.reviews-inner {
+    padding-left: 246px; /* главный отступ слева */
+    padding-right: 20px; /* небольшой отступ справа */
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
