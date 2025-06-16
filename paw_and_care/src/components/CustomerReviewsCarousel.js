@@ -7,7 +7,6 @@ import leftArrowSVG from '../assets/SVG/left_arrow.svg';
 import rightArrowSVG from '../assets/SVG/right_arrow.svg';
 
 const ReviewCard = ({ name, rating, reviewText, dateOfReview }) => {
-    // Функция для рендеринга звезд рейтинга
     const renderStars = (numStars) => {
         const stars = [];
         for (let i = 0; i < 5; i++) {
@@ -45,23 +44,18 @@ const CustomerReviewsCarousel = () => {
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
 
-    // Функция для обновления состояния прокручиваемости
     const updateScrollability = () => {
         if (reviewsRef.current) {
             const { scrollLeft, scrollWidth, clientWidth } = reviewsRef.current;
-            // Добавляем небольшой допуск (например, 1px) для сравнения с scrollWidth,
-            // чтобы избежать проблем с точностью дробных чисел в разных браузерах
             setCanScrollLeft(scrollLeft > 0);
             setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 1);
         }
     };
 
-    // Эффект для загрузки отзывов при монтировании компонента
     useEffect(() => {
         const fetchReviews = async () => {
             try {
                 setLoading(true);
-                // Статические данные отзывов
                 const staticReviews = [
                     {
                         id: '1',
@@ -99,7 +93,6 @@ const CustomerReviewsCarousel = () => {
                         dateOfReview: '10-02-2024',
                     },
                 ];
-                // Имитация задержки сети для демонстрации загрузки
                 await new Promise(resolve => setTimeout(resolve, 500));
                 setReviews(staticReviews);
                 setLoading(false);
@@ -109,16 +102,13 @@ const CustomerReviewsCarousel = () => {
             }
         };
 
-        fetchReviews(); // Вызов функции загрузки отзывов
-    }, []); // Пустой массив зависимостей означает, что эффект запустится один раз при монтировании
+        fetchReviews();
+    }, []);
 
-    // Эффект для добавления слушателя события прокрутки
     useEffect(() => {
         const currentReviewsRef = reviewsRef.current;
         if (currentReviewsRef) {
             currentReviewsRef.addEventListener('scroll', updateScrollability);
-            // Инициализация состояния прокрутки после загрузки отзывов и рендеринга
-            // Используем setTimeout, чтобы быть уверенными, что рендеринг завершен
             const timer = setTimeout(updateScrollability, 0);
 
             return () => {
@@ -126,21 +116,19 @@ const CustomerReviewsCarousel = () => {
                 clearTimeout(timer);
             };
         }
-    }, [reviews]); // Зависимость от reviews, чтобы пересчитывать при изменении контента
+    }, [reviews]);
 
-    // Функция для прокрутки отзывов
     const scrollReviews = (direction) => {
         if (reviewsRef.current) {
-            const scrollAmount = 370; // Количество пикселей для прокрутки
+            const scrollAmount = 370;
             if (direction === 'left') {
-                reviewsRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' }); // Прокрутка влево
+                reviewsRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
             } else {
-                reviewsRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' }); // Прокрутка вправо
+                reviewsRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
             }
         }
     };
 
-    // Отображение сообщения о загрузке или ошибке
     if (loading) return <div className="loading-message">Loading reviews...</div>;
     if (error) return <div className="error-message">{error}</div>;
 
@@ -149,41 +137,32 @@ const CustomerReviewsCarousel = () => {
             <div className="reviews-container">
                 <div className="reviews-inner">
                     <h3>Customer Reviews</h3>
-                    {/* Навигационные кнопки расположены абсолютно внутри reviews-section-wrapper */}
-                    {/* Классы 'active-scroll' добавляются, если прокрутка возможна */}
                     <div className="navigational-buttons">
-                        {/* Кнопка прокрутки влево */}
                         <button
                             onClick={() => scrollReviews('left')}
                             className={`nav-button ${canScrollLeft ? 'active-scroll' : ''}`}
                             disabled={!canScrollLeft}
                         >
-                            {/* Использование импортированного SVG для левой стрелки */}
                             <img
                                 src={leftArrowSVG}
                                 alt="Scroll Left"
                                 className="nav-icon"
-                                // onError обработчик удален
                             />
                         </button>
-                        {/* Кнопка прокрутки вправо */}
                         <button
                             onClick={() => scrollReviews('right')}
                             className={`nav-button ${canScrollRight ? 'active-scroll' : ''}`}
                             disabled={!canScrollRight}
                         >
-                            {/* Использование импортированного SVG для правой стрелки */}
                             <img
                                 src={rightArrowSVG}
                                 alt="Scroll Right"
                                 className="nav-icon"
-                                // onError обработчик удален
                             />
                         </button>
                     </div>
                     <div className="reviews-collection" ref={reviewsRef}>
                         <div className="review-cards-wrapper">
-                            {/* Отображение карточек отзывов */}
                             {reviews.map((review) => (
                                 <ReviewCard
                                     key={review.id}
@@ -195,7 +174,6 @@ const CustomerReviewsCarousel = () => {
                             ))}
                         </div>
                     </div>
-                    {/* Ссылка на страницу написания отзыва */}
                     <Link to="/write-a-review" className="write-review-link">
                         <button className="write-review-button">
                             Write a Review
@@ -204,7 +182,7 @@ const CustomerReviewsCarousel = () => {
                 </div>
             </div>
         </div>
-            );
-            };
+    );
+};
 
-            export default CustomerReviewsCarousel;
+export default CustomerReviewsCarousel;
