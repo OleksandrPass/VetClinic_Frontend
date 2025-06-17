@@ -14,7 +14,7 @@ const PasswordResetRequest = () => {
 
     try {
       const response = await fetch(
-        "https://vetclinic-backend.ew.r.appspot.com/api/auth/reset-password-request",
+        "https://vet-clinic-backend.ew.r.appspot.com/api/auth/reset-password-request",
         {
           method: "POST",
           headers: {

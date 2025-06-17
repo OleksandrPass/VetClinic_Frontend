@@ -12,7 +12,7 @@ const SideMenu = () => {
           <Link
             to="/profile/pets"
             className="pet-link"
-            style={location.pathname === '/profile/pets' ? { background: '#086788', color: 'white' } : {}}
+            style={location.pathname === '/profile/pets' || '/profile/pets/{pet.id}' ? { background: '#086788', color: 'white' } : {}}
           >
             <ol>Pet</ol>
           </Link>

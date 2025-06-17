@@ -20,6 +20,7 @@ import PetPage from "./pages/Profile/profilePages/PetPage";
 import ProfileLayout from "./Layouts/ProfileLayout";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
+import PetDetailsPage from "./pages/Profile/profilePages/PetDetailsPage";
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
           <Route path="/remove-account-success" element={<PageDeletionSuccess />} />
           <Route path="/profile" element={<ProfileLayout />}>
             <Route path="pets" element={<PetPage />} />
+            <Route path="pets/:petId" element={<PetDetailsPage />} />
           </Route>
 
         </Routes>

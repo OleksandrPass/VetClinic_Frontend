@@ -1,5 +1,8 @@
 ﻿import React, { useState } from 'react';
 import './PetCard.css';
+import logo from '../../assets/SVG/logo.svg';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const PetCard = ({ pet, token, onPetUpdated }) => {
   const [editing, setEditing] = useState(false);
@@ -10,9 +13,15 @@ const PetCard = ({ pet, token, onPetUpdated }) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/profile/pets/${pet.id}`);
+  }
+
   const handleUpdate = async () => {
     try {
-      const res = await fetch(`https://vetclinic-backend.ew.r.appspot.com/api/user/pets/${pet.id}`, {
+      const res = await fetch(`https://vet-clinic-backend.ew.r.appspot.com/api/user/pets/${pet.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -27,7 +36,7 @@ const PetCard = ({ pet, token, onPetUpdated }) => {
         const form = new FormData();
         form.append('photo', photo);
 
-        const photoRes = await fetch(`https://vetclinic-backend.ew.r.appspot.com/api/pets/${pet.id}/photo`, {
+        const photoRes = await fetch(`https://vet-clinic-backend.ew.r.appspot.com/api/pets/${pet.id}/photo`, {
           method: 'POST',
           headers: {
             Authorization: `Bearer ${token}`,
@@ -46,40 +55,25 @@ const PetCard = ({ pet, token, onPetUpdated }) => {
   };
 
   return (
-    <div className="pet-card">
-      <div className="pet-image">
+    <Link
+      to={`/profile/pets/${pet.id}`}
+      state={{ pet }}
+      className="pet-card-link"
+    >
+      <div className="pet-card">
         <img
-          src={pet.photo_url || '/placeholder.jpg'}
+          src={pet.photoUrl || logo}
           alt={pet.name}
+          className="pet-photo"
         />
-        {editing && <input type="file" onChange={(e) => setPhoto(e.target.files[0])} />}
+        <div className="pet-info">
+          <h3>{pet.name}</h3>
+          <p><span>Species:</span> {pet.species}</p>
+          <p><span>Breed:</span> {pet.breed}</p>
+          <p><span>Gender:</span> {pet.gender || '—'}</p>
+        </div>
       </div>
-
-      <div className="pet-info">
-        {editing ? (
-          <>
-            <input name="name" value={formData.name} onChange={handleChange} />
-            <input name="species" value={formData.species} onChange={handleChange} />
-            <input name="breed" value={formData.breed} onChange={handleChange} />
-            <input name="age" value={formData.age || ''} onChange={handleChange} />
-            <input name="weight" value={formData.weight || ''} onChange={handleChange} />
-            <input name="gender" value={formData.gender || ''} onChange={handleChange} />
-            <button className="save-btn" onClick={handleUpdate}>Save</button>
-            <button className="cancel-btn" onClick={() => setEditing(false)}>Cancel</button>
-          </>
-        ) : (
-          <>
-            <h3>{pet.name}</h3>
-            <p>Species: {pet.species}</p>
-            <p>Breed: {pet.breed}</p>
-            <p>Age: {pet.age || '—'}</p>
-            <p>Weight: {pet.weight || '—'}</p>
-            <p>Gender: {pet.gender || '—'}</p>
-            <button className="edit-btn" onClick={() => setEditing(true)}>Edit</button>
-          </>
-        )}
-      </div>
-    </div>
+    </Link>
   );
 };
 
