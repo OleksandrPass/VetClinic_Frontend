@@ -1,8 +1,6 @@
 ﻿import React from 'react';
 /*import 'react-calendar/dist/Calendar.css';*/
-import Header from '../components/header';
 import './RequestAppointment.css';
-import Footer from '../components/footer';
 import AppointmentCalendar from "../components/AppointmentCalendar";
 import { useState } from 'react';
 import CustomSelect from '../components/CustomSelect';
@@ -61,7 +59,6 @@ const RequestAppointment = () => {
 
     return (
         <div>
-            <Header />
             <h3>Request Appointment</h3>
             <div className="request-appointment">
                 <div className="form-section">
@@ -163,7 +160,6 @@ const RequestAppointment = () => {
                 </div>
             </div>
 
-            <Footer />
         </div>
 
     );
