@@ -1,6 +1,7 @@
 ﻿import React, { useEffect, useState } from "react";
 import './LogIn.css';
 import { Link, useNavigate } from "react-router-dom";
+import getProfile from '../../api/getProfile';
 
 const LogIn = () => {
   const [email, setEmail] = useState('');
@@ -39,7 +40,7 @@ const LogIn = () => {
     };
 
     try {
-      const response = await fetch('https://vetclinic-backend.ew.r.appspot.com/api/auth/login', {
+      const response = await fetch('https://vet-clinic-backend.ew.r.appspot.com/api/auth/login', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {

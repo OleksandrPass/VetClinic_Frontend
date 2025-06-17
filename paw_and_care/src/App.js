@@ -28,12 +28,13 @@ import WriteReview from "./pages/WriteReview";
 import PageReviewSubmitted from "./pages/PageReviewSubmitted";
 import Contact from "./pages/Contact";
 import Schedule from "./pages/Schedule";
+import HeaderRouter from "./components/header/headerRouter";
 
 function App() {
   return (
     <Router>
       <div>
-        <Header/>
+        <HeaderRouter/>
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/general-checkups" element={<GeneralCheckUps />} />

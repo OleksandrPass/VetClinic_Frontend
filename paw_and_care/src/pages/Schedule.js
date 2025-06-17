@@ -64,7 +64,6 @@ const Schedule = () => {
 
     return (
         <div className="schedule-page-container">
-            <SpecialistReceptionistHeader /> {/* Ваш существующий хедер */}
 
             <div className="schedule-content">
                 <div className="month-navigation">

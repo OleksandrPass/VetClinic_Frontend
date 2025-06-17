@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, NavLink } from 'react-router-dom';
-import './header.css'; // Используем тот же CSS файл
+import '../components/header/header.css'; // Используем тот же CSS файл
 import logo from '../assets/SVG/logo.svg';
 import profile_picture_test from "../assets/Img Docktor/Doktor 1.jpg.jpg";
 
@@ -9,6 +9,9 @@ const SpecialistReceptionistHeader = () => {
     const [open, setOpen] = useState(false);
     const dropdownRef = useRef(null);
     const navigate = useNavigate();
+
+    const storedUser = localStorage.getItem("user-info");
+    const user = storedUser ? JSON.parse(storedUser).profile : null;
 
     const logout = (e) => {
         e.stopPropagation();

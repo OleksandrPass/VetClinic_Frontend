@@ -1,11 +1,10 @@
-﻿import AppointmentButton from "../components/appointmentButton";
+﻿import AppointmentButton from "../../components/buttons/appointmentButton";
 import './Main.css';
-import './Services.css';
-import '../assets/Лендинги/2202.q702.029.F.m005.c7.veterinary.jpg';
-import '../assets/Services/2149100168.jpg';
-import '../assets/Services/2147928582.jpg';
-import '../assets/Services/Dental.jpg';
 import '../Services/Services.css';
+import '../../assets/Лендинги/2202.q702.029.F.m005.c7.veterinary.jpg';
+import '../../assets/Services/2149100168.jpg';
+import '../../assets/Services/2147928582.jpg';
+import '../../assets/Services/Dental.jpg';
 import '../../assets/Лендинги/2202.q702.029.F.m005.c7.veterinary.jpg';
 import '../../assets/Services/2149100168.jpg';
 import '../../assets/Services/2147928582.jpg';
@@ -17,6 +16,7 @@ import smart_tracking from "../../assets/SVG/smart-tracking.svg";
 import all_in_one from "../../assets/SVG/all-in-one.svg"
 import {Link} from "react-router-dom";
 import MoreButton from "../../components/buttons/moreButton";
+import CustomerReviewsCarousel from "../../components/CustomerReviewsCarousel"
 
 
 const Main = () => {

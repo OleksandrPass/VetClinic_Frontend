@@ -256,12 +256,11 @@ const RequestAppointment = () => {
   if (loadingPets) {
     return (
       <div>
-        <Header />
         <h3>Request Appointment</h3>
         <div className="request-appointment">
           <p>Loading pet information...</p>
         </div>
-        <Footer />
+
       </div>
     );
   }
