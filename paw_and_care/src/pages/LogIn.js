@@ -10,7 +10,7 @@ const LogIn = () => {
   const navigate = useNavigate();
 
   const getRedirectPath = (userType) => {
-    if (userType === 'specialist') {
+    if (userType === 'doctor') {
       return '/schedule';
     } else if (userType === 'admin') {
       return '/schedule_admin';
