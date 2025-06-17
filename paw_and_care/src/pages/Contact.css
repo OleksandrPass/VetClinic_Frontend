@@ -1,0 +1,187 @@
+.contact-page-container {
+    position: relative;
+    min-height: 1100px;
+}
+
+.contact-info-box {
+    position: absolute;
+    top: 180px;
+    left: 247px;
+    width: 583px;
+    height: 392px;
+    background-color: #D8F0FF;
+    border: none;
+    border-radius: 8px;
+    box-sizing: border-box;
+    padding: 0 30px 30px 30px; /* без padding-top */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* чтобы содержимое было сверху */
+}
+
+.contact-info-box h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 32px;
+    margin: 60px 0 55px 0;
+}
+
+.contact-info-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-info-box li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1; /* 100% */
+    vertical-align: middle;
+}
+
+.custom-text {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 5px; /* хоть это и очень маленький, но ты указал так */
+    vertical-align: middle;
+    color: #6390B8;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.contact-form-box {
+    position: relative;
+    top: 100px;
+    left: 935px;
+    width: 702px;
+    overflow: visible;
+}
+
+.contact-form-box h3 {
+    font-size: 32px;
+    line-height: 20px;
+    color: #000000;
+    font-weight: 600;
+    font-family: Poppins, serif;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 59px;
+
+    margin-left: 208.5px; /* подстрой значение по ситуации */
+    width: max-content;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px; /* расстояние между блоками полей */
+}
+
+.contact-form-row {
+    display: flex;
+    gap: 18px; /* отступ между двумя полями */
+}
+
+.contact-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* отступ между label и input */
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.contact-form-group input,
+.contact-form-group textarea{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 16px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    resize: none;
+}
+
+/* Два поля в строку */
+.contact-form-row .contact-form-group {
+    width: 342px;
+    box-sizing: border-box;
+}
+
+.contact-form-row .contact-form-group input {
+    height: 78px;
+}
+
+/* Одиночные поля (input) */
+.contact-form-group:not(.single) {
+    width: 702px;
+}
+
+.contact-form-group:not(.single) input {
+    height: 78px;
+}
+
+/* Текстовая область */
+.contact-form-group.single {
+    width: 702px;
+}
+
+.contact-form-group.single textarea {
+    height: 141px;
+    width: 100%;
+}
+
+
+.contact-wrapper {
+    width: 720px;
+    display: flex;
+    justify-content: center;
+}
+
+.submit-contact-btn {
+    width: 268px;
+    height: 61px;
+    background-color: #F05508;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: background-color 0.3s ease;
+    padding: 12px 0; /* вертикальные паддинги */
+}
+
+.submit-contact-btn:hover {
+    background-color: #F68E5F;
+}
+
+.map-container {
+    height: 335px;
+    width: 100vw;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
