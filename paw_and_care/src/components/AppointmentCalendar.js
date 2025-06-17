@@ -20,7 +20,7 @@ dayjs.locale({
 });
 const NoTransition = ({ children }) => <>{children}</>;
 
-const TIME_SLOTS = [
+const PREDEFINED_TIME_SLOTS = [
     { start: "09:00", durationMinutes: 60 },
     { start: "10:15", durationMinutes: 45 },
     { start: "11:30", durationMinutes: 90 },
@@ -34,6 +34,7 @@ export default function AppointmentCalendar(props) {
         setSelectedDate,
         selectedTime,
         setSelectedTime,
+        bookedSlotsForSelectedDate,
     } = props;
     const [displayedMonth, setDisplayedMonth] = useState(dayjs().startOf("month"));
     const dayOfWeekFormatter = (day) => day.format("ddd");
@@ -65,6 +66,11 @@ export default function AppointmentCalendar(props) {
         updateWeekCount();
     }, [displayedMonth]);
 
+    const availableSlots = PREDEFINED_TIME_SLOTS.filter(slot => {
+        // bookedSlotsForSelectedDate - это массив строк времени ("HH:mm") для текущей выбранной даты
+        return !bookedSlotsForSelectedDate.includes(slot.start);
+    });
+
 
     return (
         <div className="calendar-container" ref={calendarRef}>
@@ -95,9 +101,11 @@ export default function AppointmentCalendar(props) {
             </LocalizationProvider>
 
             {selectedDate && (
-                <div className={`time-slots-container ${isFiveWeekMonth ? "shift-up" : ""}`}> {/* UPDATE */}
+                <div className={`time-slots-container ${isFiveWeekMonth ? "shift-up" : ""}`}>
+                    {/* НОВОЕ: Условный рендеринг, если слоты есть */}
+                    {availableSlots.length > 0 ? (
                     <div className="time-slots">
-                        {TIME_SLOTS.map(({ start, durationMinutes }) => {
+                        {availableSlots.map(({ start, durationMinutes }) => {
                             const startTime = dayjs(start, "HH:mm");
                             const endTime = startTime.add(durationMinutes, "minute");
                             return (
@@ -114,6 +122,9 @@ export default function AppointmentCalendar(props) {
                             );
                         })}
                     </div>
+                    ) : (
+                        <p>No available slots for the selected date.</p>
+                    )}
                 </div>
             )}
         </div>
