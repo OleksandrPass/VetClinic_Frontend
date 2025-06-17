@@ -119,9 +119,15 @@ const RequestAppointment = () => {
                 if (!response.ok) {
                     const errorData = await response.json().catch(() => ({ message: response.statusText }));
                     if (errorData.message && errorData.message.includes('Token expired')) {
-                        throw new Error("Token expired. Please log in again.");
+                        console.error("Error fetching user pets: Token expired. Please log in again.");
+                        alert("Your session has expired. Please log in again.");
+                        setLoadingPets(false);
+                        return;
                     }
-                    throw new Error(`Failed to fetch user pets: ${errorData.message}`);
+                    console.error(`Error fetching user pets: ${errorData.message}`);
+                    alert(`Error fetching your pets: ${errorData.message}. Please try refreshing the page.`);
+                    setLoadingPets(false);
+                    return;
                 }
 
 
@@ -129,12 +135,8 @@ const RequestAppointment = () => {
                 setUserPets(data);
                 console.log("Fetched user pets:", data);
             } catch (error) {
-                console.error("Error fetching user pets:", error.message);
-                if (error.message.includes("Token expired")) {
-                    alert("Your session has expired. Please log in again.");
-                } else {
-                    alert(`Error fetching your pets: ${error.message}. Please try refreshing the page.`);
-                }
+                console.error("Network or unexpected error fetching user pets:", error.message);
+                alert(`An unexpected error occurred while fetching your pets: ${error.message}. Please try again.`);
             } finally {
                 setLoadingPets(false);
             }
@@ -307,6 +309,7 @@ const RequestAppointment = () => {
                                        value={petName}
                                        onChange={(e) => setPetName(e.target.value)}
                                        required />
+                                {petIdError && <p className="error-message">{petIdError}</p>}
                             </div>
 
                             <div className="appointment-form-row">
