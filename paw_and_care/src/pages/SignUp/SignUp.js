@@ -37,7 +37,7 @@ const SignUp = () => {
     };
 
     try {
-      const response = await fetch('https://vetclinic-backend.ew.r.appspot.com/api/auth/register', {
+      const response = await fetch('https://vet-clinic-backend.ew.r.appspot.com/api/auth/register', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -49,14 +49,46 @@ const SignUp = () => {
       const result = await response.json();
 
       if (response.ok) {
-        localStorage.setItem('user-info', JSON.stringify(result));
-        navigate("/about-us");
+        // Registration successful, now log the user in
+        await handleAutoLogin(email, password);
       } else {
         alert("Registration failed: " + result.message);
       }
     } catch (error) {
       console.error("Registration error:", error);
       alert("Something went wrong. Please try again.");
+    }
+  };
+
+// Automatically log the user in after successful registration
+  const handleAutoLogin = async (email, password) => {
+    const loginData = {
+      email,
+      password
+    };
+
+    try {
+      const response = await fetch('https://vet-clinic-backend.ew.r.appspot.com/api/auth/login', {
+        method: 'POST',
+        body: JSON.stringify(loginData),
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        }
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem('user-info', JSON.stringify(result));
+        localStorage.setItem('token', result.token); // Save token separately
+        navigate("/about-us");
+      } else {
+        alert("Login after registration failed: " + result.message);
+      }
+    } catch (error) {
+      console.error("Auto login error:", error);
+      alert("Something went wrong during auto login.");
     }
   };
 
