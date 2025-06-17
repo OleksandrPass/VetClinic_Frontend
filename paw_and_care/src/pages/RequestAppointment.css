@@ -144,3 +144,9 @@ h3 {
     width: 603px;
     height: auto !important;
 }
+
+.error-message {
+    color: red;
+    font-size: 0.85em;
+    margin-top: 5px;
+}

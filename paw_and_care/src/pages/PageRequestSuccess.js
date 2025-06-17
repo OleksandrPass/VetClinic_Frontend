@@ -6,7 +6,6 @@ const PageRequestSuccess = () => {
 
     return (
         <div>
-
             <div className="content">
                 <div className="content-container">
                     <img src={greentick} alt="tick-circle" />
@@ -17,7 +16,6 @@ const PageRequestSuccess = () => {
                     <Link to={"/"}><button className={"appointment-back-home"}>Back Home</button></Link>
                 </div>
             </div>
-
         </div>
     );
 

@@ -1,6 +1,16 @@
-﻿import Header from '../../components/header/header';
-import AppointmentButton from "../../components/buttons/appointmentButton";
+﻿import AppointmentButton from "../components/appointmentButton";
 import './Main.css';
+import './Services.css';
+import '../assets/Лендинги/2202.q702.029.F.m005.c7.veterinary.jpg';
+import '../assets/Services/2149100168.jpg';
+import '../assets/Services/2147928582.jpg';
+import '../assets/Services/Dental.jpg';
+import AllServicesButton from "../components/allServicesButton";
+import CustomerReviewsCarousel from '../components/CustomerReviewsCarousel';
+import cat from "../assets/Services/cat.png";
+import pet_house from "../assets/SVG/pet-house.svg";
+import smart_tracking from "../assets/SVG/smart-tracking.svg";
+import all_in_one from "../assets/SVG/all-in-one.svg"
 import '../Services/Services.css';
 import '../../assets/Лендинги/2202.q702.029.F.m005.c7.veterinary.jpg';
 import '../../assets/Services/2149100168.jpg';
@@ -19,7 +29,6 @@ import MoreButton from "../../components/buttons/moreButton";
 const Main = () => {
   return (
     <div>
-
       <div className="ad-container">
         <h1>Compassionate Care for Your Pets
           <br/>Every Step of the Way</h1>
@@ -92,16 +101,7 @@ const Main = () => {
           </div>
         </div>
 
-        <div className="reviews-container">
-          <h3>Customer Reviews</h3>
-          <div className="navigational-buttons">
-          </div>
-          <div className="reviews-collection">
-            <div className="review-cards">
-
-            </div>
-          </div>
-        </div>
+        <CustomerReviewsCarousel />
 
       </div>
 
