@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Header from "../components/header";
-import Footer from "../components/footer";
 import './WriteReview.css';
 import {useNavigate } from "react-router-dom";
 import CustomSelect from "../components/CustomSelect";
@@ -52,7 +50,6 @@ const WriteReview = () => {
 
     return (
         <div>
-            <Header/>
             <div className="review-container">
                 <main className="review-main">
                     <h1 className="login-title">Write A Review</h1>
@@ -94,7 +91,6 @@ const WriteReview = () => {
                     <p className="review-required-note">* Indicates a required field</p>
                 </main>
             </div>
-            <Footer/>
         </div>
     );
 };

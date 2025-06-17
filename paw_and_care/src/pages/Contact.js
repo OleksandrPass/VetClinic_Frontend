@@ -1,6 +1,4 @@
 ﻿import React, { useState } from 'react';
-import Header from '../components/header';
-import Footer from '../components/footer';
 import './Contact.css';
 import phone from '../assets/SVG/call.svg';
 import mail from '../assets/SVG/mail.svg';
@@ -35,7 +33,6 @@ const ContactPage = () => {
 
     return (
         <div>
-            <Header/>
             <div className="contact-page-container">
                 <div className="contact-info-box">
                     <h2>Contact Us</h2>
@@ -131,7 +128,6 @@ const ContactPage = () => {
                 />
             </div>
 
-            <Footer/>
         </div>
     );
 };
