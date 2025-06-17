@@ -21,6 +21,7 @@ import ProfileLayout from "./Layouts/ProfileLayout";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import PetDetailsPage from "./pages/Profile/profilePages/PetDetailsPage";
+import MedicalRecordPage from "./pages/Profile/profilePages/MedicalRecordPage";
 
 
 function App() {
@@ -36,8 +37,8 @@ function App() {
           <Route path="/grooming" element={<Grooming />} />
           <Route path="/lab-tests" element={<LaboratoryTests />} />
           <Route path="/nutrition" element={<NutritionalCounselling />} />
-          <Route path="/services" element={<Services />} />/>
-          <Route path="/about-us" element={<AboutUs />} />/>/
+          <Route path="/services" element={<Services />} />
+          <Route path="/about-us" element={<AboutUs />} />
           <Route path="/log-in" element={<LogIn />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/sign-up" element={<SignUp/>} />
@@ -49,6 +50,7 @@ function App() {
           <Route path="/profile" element={<ProfileLayout />}>
             <Route path="pets" element={<PetPage />} />
             <Route path="pets/:petId" element={<PetDetailsPage />} />
+            <Route path="pets/:petId/records" element={<MedicalRecordPage />} />
           </Route>
 
         </Routes>

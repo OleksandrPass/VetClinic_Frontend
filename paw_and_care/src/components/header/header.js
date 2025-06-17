@@ -20,7 +20,7 @@ const Header = () => {
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
-        setUserInfo(parsed?.profile || parsed); // supports both {token, profile} or just profile
+        setUserInfo(parsed?.profile || parsed);
       } catch (e) {
         console.error("Failed to parse user-info:", e);
       }
