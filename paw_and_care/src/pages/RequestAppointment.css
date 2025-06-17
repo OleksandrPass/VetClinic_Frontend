@@ -1,0 +1,146 @@
+.request-appointment {
+    position: relative;
+    min-height: 1100px;
+}
+
+h3 {
+    font-size: 24px;
+    line-height: 20px;
+    color: #000000;
+    font-weight: 600;
+    font-family: Poppins, serif;
+    margin-top: 100px;
+    text-align: center;
+    margin-left: 400px; /*нужно потом удалить*/
+}
+
+.form-section {
+    position: absolute;
+    width: 603px;
+    height: 723px;
+    top: 65px;
+    left: 247px;
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+.appointment-form-group {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', 'sans-serif';
+    font-weight: 500;
+    font-size: 16px;
+    height: 85px; /* высота блока */
+    justify-content: space-between;
+    margin-bottom: 15px; /* отступ между блоками */
+}
+
+
+.appointment-form-group label {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px; /* расстояние между лейблом и полем */
+    line-height: 1.2;
+}
+
+.appointment-form-group input {
+    height: 55px;
+    padding: 0 12px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Одиночные поля (полная ширина) */
+.appointment-form-group.single input {
+    width: 603px;
+    height: 55px;
+}
+
+/* Поля, расположенные вдвоем в строке */
+.appointment-form-row .appointment-form-group input {
+    width: 286px;
+    height: 55px;
+}
+
+.appointment-form-row {
+    display: flex;
+    gap: 31px; /* расстояние между двумя полями в ряду */
+    width: 603px; /* ширина формы */
+    box-sizing: border-box;
+}
+
+.appointment-form-row .appointment-form-group {
+    flex: 1 1 0; /* равномерно делим пространство */
+    min-width: 0; /* важно для правильного сжатия в flex */
+}
+
+.appointment-form-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    margin-bottom: 15px;
+}
+
+.appointment-form-checkbox input {
+    margin-top: 0.2rem;
+    height: 30px;
+    width: 33px;
+}
+
+.appointment-checkbox-text {
+    color:#6C757D;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Inter', 'sans-serif';
+}
+
+.appointment-checkbox-text a {
+    color:#6C757D;
+}
+
+.request-btn {
+    width: 603px;
+    height: 61px;
+    background-color: #F05508;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: background-color 0.3s ease;
+    padding: 12px 0; /* вертикальные паддинги */
+}
+
+.request-btn:hover {
+    background-color: #F68E5F;
+}
+
+.required-note {
+    font-size: 15px;
+    color: #000;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.calendar-section {
+    position: relative;
+    top: 65px;
+    left: 935px;
+    background: white;
+    box-sizing: border-box;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    width: 603px;
+    height: auto !important;
+}

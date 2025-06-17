@@ -22,7 +22,11 @@ import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import PetDetailsPage from "./pages/Profile/profilePages/PetDetailsPage";
 import MedicalRecordPage from "./pages/Profile/profilePages/MedicalRecordPage";
-
+import RequestAppointment from "./pages/RequestAppointment";
+import PageRequestSuccess from "./pages/PageRequestSuccess";
+import WriteReview from "./pages/WriteReview";
+import PageReviewSubmitted from "./pages/PageReviewSubmitted";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -47,6 +51,16 @@ function App() {
           <Route path="/password-reset-success" element={<PasswordRecoverySuccess />} />
           <Route path="/remove-account" element={<AccountDeletion />} />
           <Route path="/remove-account-success" element={<PageDeletionSuccess />} />
+          <Route path="/appointment-request" element={<RequestAppointment />} />
+          <Route path="/request-success" element={<PageRequestSuccess />} />
+          <Route path="/write-a-review" element={<WriteReview />} />
+          <Route path="/review-submitted" element={<PageReviewSubmitted />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/appointment-request" element={<RequestAppointment />} />
+          <Route path="/request-success" element={<PageRequestSuccess />} />
+          <Route path="/write-a-review" element={<WriteReview />} />
+          <Route path="/review-submitted" element={<PageReviewSubmitted />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/profile" element={<ProfileLayout />}>
             <Route path="pets" element={<PetPage />} />
             <Route path="pets/:petId" element={<PetDetailsPage />} />
