@@ -22,6 +22,7 @@ import PageRequestSuccess from "./pages/PageRequestSuccess";
 import WriteReview from "./pages/WriteReview";
 import PageReviewSubmitted from "./pages/PageReviewSubmitted";
 import Contact from "./pages/Contact";
+import Schedule from "./pages/Schedule";
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           <Route path="/write-a-review" element={<WriteReview />} />
           <Route path="/review-submitted" element={<PageReviewSubmitted />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/schedule" element={<Schedule />} />
 
         </Routes>
       </div>

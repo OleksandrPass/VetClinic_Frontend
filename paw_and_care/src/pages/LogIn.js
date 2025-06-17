@@ -9,11 +9,28 @@ const LogIn = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (localStorage.getItem('user-info')) {
-      navigate('/about-us');
+  const getRedirectPath = (userType) => {
+    if (userType === 'specialist') {
+      return '/schedule';
+    } else if (userType === 'admin') {
+      return '/schedule_admin';
+    } else {
+      return '/about-us';
     }
-  }, [navigate]); // Added navigate to dependencies
+  };
+
+  useEffect(() => {
+    const userInfoString = localStorage.getItem('user-info');
+    if (userInfoString) {
+      try {
+        const userInfo = JSON.parse(userInfoString);
+        navigate(getRedirectPath(userInfo.userType));
+      } catch (e) {
+        console.error("Error parsing user-info from localStorage:", e);
+        localStorage.removeItem('user-info');
+      }
+    }
+  }, [navigate]);
 
   const logIn = async (e) => {
     e.preventDefault();
@@ -24,7 +41,7 @@ const LogIn = () => {
     };
 
     try {
-      const response = await fetch('https://vetclinic-backend.ew.r.appspot.com/api/auth/login', {
+      const response = await fetch('https://vet-clinic-backend.ew.r.appspot.com/api/auth/login', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -37,8 +54,8 @@ const LogIn = () => {
 
       if (response.ok) {
         localStorage.setItem('user-info', JSON.stringify(result));
-        navigate('/about-us');
-      } else {
+        navigate(getRedirectPath(result.userType));
+      }  else {
         alert("Login failed: " + result.message);
       }
     } catch (error) {
