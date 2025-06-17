@@ -27,6 +27,7 @@ import PageRequestSuccess from "./pages/PageRequestSuccess";
 import WriteReview from "./pages/WriteReview";
 import PageReviewSubmitted from "./pages/PageReviewSubmitted";
 import Contact from "./pages/Contact";
+import Schedule from "./pages/Schedule";
 
 function App() {
   return (
@@ -66,6 +67,7 @@ function App() {
             <Route path="pets/:petId" element={<PetDetailsPage />} />
             <Route path="pets/:petId/records" element={<MedicalRecordPage />} />
           </Route>
+          <Route path="/schedule" element={<Schedule />} />
 
         </Routes>
         <Footer/>>
