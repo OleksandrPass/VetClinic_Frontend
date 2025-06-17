@@ -14,7 +14,6 @@ import '../../assets/Services/paw-svgrepo-com 1.png';
 const DentalCare = () => {
     return (
         <div>
-            <Header />
 
             <Link to="/services" className="left-arrow-link" />
 
@@ -50,7 +49,7 @@ const DentalCare = () => {
                 <AppointmentButton/>
             </div>
 
-            <Footer />
+
         </div>
     )
 }

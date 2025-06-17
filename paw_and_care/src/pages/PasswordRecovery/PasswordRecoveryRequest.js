@@ -14,7 +14,7 @@ const PasswordResetRequest = () => {
 
     try {
       const response = await fetch(
-        "https://vetclinic-backend.ew.r.appspot.com/api/auth/reset-password-request",
+        "https://vet-clinic-backend.ew.r.appspot.com/api/auth/reset-password-request",
         {
           method: "POST",
           headers: {
@@ -38,7 +38,6 @@ const PasswordResetRequest = () => {
 
   return (
     <div>
-      <Header />
       <div className="password-recovery-container">
         <form onSubmit={handleSubmit}>
           <h1>Reset Password</h1>
@@ -55,7 +54,6 @@ const PasswordResetRequest = () => {
           {message && <p>{message}</p>}
         </form>
       </div>
-      <Footer />
     </div>
   );
 };

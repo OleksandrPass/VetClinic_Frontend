@@ -1,24 +1,33 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './header.css';
 import logo from '../../assets/SVG/logo.svg';
 import AppointmentButton from "../buttons/appointmentButton";
 import SignUpButton from "../buttons/signUpButton";
-import profile_picture_test from "../../assets/Img Docktor/Office girl.jpg";
-import arrow from "../../assets/SVG/arrow-up-340-svgrepo-com 2.svg";
+import default_profile from "../../assets/Лендинги/profile_picture.png";
 
 const Header = () => {
-  const [open, setOpen] = React.useState(false);
-  const dropdownRef = React.useRef(null);
+  const [open, setOpen] = useState(false);
+  const [userInfo, setUserInfo] = useState(null);
+  const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
-  const logout = (e) => {
-    e.stopPropagation(); // Prevent event bubbling
-    localStorage.removeItem('user-info');
-    navigate('/log-in');
-  };
+  const storedUser = localStorage.getItem("user-info");
+  const user = storedUser ? JSON.parse(storedUser).profile : null;
 
-  React.useEffect(() => {
+  useEffect(() => {
+    const stored = localStorage.getItem('user-info');
+    if (stored) {
+      try {
+        const parsed = JSON.parse(stored);
+        setUserInfo(parsed?.profile || parsed); // supports both {token, profile} or just profile
+      } catch (e) {
+        console.error("Failed to parse user-info:", e);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setOpen(false);
@@ -30,12 +39,15 @@ const Header = () => {
     };
   }, []);
 
-  const userInfo = localStorage.getItem('user-info')
-    ? JSON.parse(localStorage.getItem('user-info'))
-    : null;
+  const logout = (e) => {
+    e.stopPropagation();
+    localStorage.removeItem('user-info');
+    localStorage.removeItem('token');
+    navigate('/log-in');
+  };
 
   const toggleDropdown = (e) => {
-    e.stopPropagation(); // Prevent event bubbling
+    e.stopPropagation();
     setOpen(!open);
   };
 
@@ -59,23 +71,20 @@ const Header = () => {
           {userInfo ? (
             <div className="profile-dropdown-container" ref={dropdownRef}>
               <div className={`profile-container ${open ? 'active' : ''}`} onClick={toggleDropdown}>
-                <img src={profile_picture_test} className="profile-image" alt={'profile picture'}/>
-                <div className={`menu-trigger ${open ? 'active' : ''}`} onClick={toggleDropdown}>
-                  {/*<img src={arrow} className={"arrow-icon" } alt={'arrow-icon'}/>*/}
-                </div>
+                <img src={default_profile} className="profile-image" alt={'profile'} />
               </div>
 
               {open && (
                 <div className="dropdown-menu" onClick={e => e.stopPropagation()}>
                   <div className="dropdown-header">
-                    <div className="user-name">{userInfo.name || 'User Name'}</div>
-                    <div className="user-email">{userInfo.email || 'user@example.com'}</div>
-                    <div className="user-phone">{userInfo.phone || '+123 456 789'}</div>
+                    <div className="user-name">{user?.name || 'User Name'}</div>
+                    <div className="user-email">{user?.email || 'user@example.com'}</div>
+                    <div className="user-phone">{user?.phone || '+123 456 789'}</div>
                   </div>
 
                   <div className="dropdown-divider"></div>
 
-                  <Link to="/profile" className="dropdown-item" onClick={e => e.stopPropagation()}>
+                  <Link to="/profile/pets" className="dropdown-item" onClick={e => e.stopPropagation()}>
                     My Profile
                   </Link>
                   <button className="dropdown-item" onClick={logout}>Log out</button>

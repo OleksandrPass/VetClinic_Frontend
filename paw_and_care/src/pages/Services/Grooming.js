@@ -14,7 +14,7 @@ import '../../assets/Services/paw-svgrepo-com 1.png';
 const Grooming = () => {
     return (
         <div>
-            <Header />
+
 
             <Link to="/services" className="left-arrow-link" />
 
@@ -50,7 +50,7 @@ const Grooming = () => {
                 <AppointmentButton/>
             </div>
 
-            <Footer />
+
         </div>
     )
 }

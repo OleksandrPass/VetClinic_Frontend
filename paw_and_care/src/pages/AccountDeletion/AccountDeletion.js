@@ -10,7 +10,7 @@ const AccountDeletion = () => {
 
   return (
     <div>
-      <Header />
+
       <div className={"deletion-container"}>
         <div className={"deletion"}>
           <h1>:(</h1>
@@ -19,7 +19,7 @@ const AccountDeletion = () => {
         <Link to={"/remove-account-success"}></Link>
         <button type={'submit'}>Delete Account</button>
       </div>
-      <Footer />
+
     </div>
   )
 }

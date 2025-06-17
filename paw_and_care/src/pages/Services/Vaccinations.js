@@ -12,7 +12,7 @@ import '../../assets/Services/paw-svgrepo-com 1.png';
 const Vaccinations = () => {
     return (
         <div>
-            <Header />
+
 
             <Link to="/services" className="left-arrow-link" />
 
@@ -47,8 +47,6 @@ const Vaccinations = () => {
                 <h3>Book a Vaccination appointment today to keep your pet safe and protected!</h3>
                 <AppointmentButton/>
             </div>
-
-            <Footer />
         </div>
     )
 }

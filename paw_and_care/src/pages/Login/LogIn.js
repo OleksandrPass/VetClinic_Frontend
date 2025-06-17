@@ -1,8 +1,8 @@
 ﻿import React, { useEffect, useState } from "react";
-import Header from "../../components/header/header";
-import Footer from "../../components/footer/footer";
 import './LogIn.css';
 import { Link, useNavigate } from "react-router-dom";
+import getHeader from "../../api/getProfile";
+import getProfile from "../../api/getProfile";
 
 const LogIn = () => {
   const [email, setEmail] = useState('');
@@ -24,7 +24,7 @@ const LogIn = () => {
     };
 
     try {
-      const response = await fetch('https://vetclinic-backend.ew.r.appspot.com/api/auth/login', {
+      const response = await fetch('https://vet-clinic-backend.ew.r.appspot.com/api/auth/login', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -36,9 +36,11 @@ const LogIn = () => {
       const result = await response.json();
 
       if (response.ok) {
-        localStorage.setItem('user-info', JSON.stringify(result));
+        localStorage.setItem('token', result.token);
+        const profile = await getProfile(); // Modify getProfile to return the profile object
+        localStorage.setItem('user-info', JSON.stringify({ ...result, profile }));
         navigate('/about-us');
-      } else {
+    } else {
         alert("Login failed: " + result.message);
       }
     } catch (error) {
@@ -49,7 +51,7 @@ const LogIn = () => {
 
   return (
     <div>
-      <Header/>
+
       <div className="login-container">
         <main className="login-main">
           <h1 className="login-title">Log In</h1>
@@ -85,7 +87,7 @@ const LogIn = () => {
           </form>
         </main>
       </div>
-      <Footer/>
+
     </div>
   );
 };
