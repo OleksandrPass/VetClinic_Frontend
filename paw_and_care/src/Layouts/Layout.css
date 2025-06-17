@@ -1,0 +1,19 @@
+﻿.profile-layout {
+    display: flex;
+    width: 100%;
+}
+
+.profile-h1 {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    font-size: 32px;
+    font-weight: 700;
+    font-family: Inter, serif;
+    color: #000;
+}
+
+.profile-content {
+    flex: 1;
+    background-color: #fff;
+}

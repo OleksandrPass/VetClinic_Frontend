@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Header from "../components/header";
-import Footer from "../components/footer";
 import './WriteReview.css';
 import { useNavigate } from "react-router-dom";
 import CustomSelect from "../components/CustomSelect";
@@ -48,41 +46,41 @@ const WriteReview = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Client-side validation
-        if (!selectedService || !selectedDoctor || !reviewText.trim() || rating === 0) {
-            alert('Please fill in all required fields and provide a rating.');
-            return;
-        }
+    // Client-side validation
+    if (!selectedService || !selectedDoctor || !reviewText.trim() || rating === 0) {
+      alert('Please fill in all required fields and provide a rating.');
+      return;
+    }
 
-        const serviceId = getServiceId(selectedService);
-        const specialistId = getDoctorId(selectedDoctor);
+    const serviceId = getServiceId(selectedService);
+    const specialistId = getDoctorId(selectedDoctor);
 
-        // Ensure IDs are correctly mapped
-        if (!serviceId || !specialistId) {
-            alert('Could not determine service or doctor ID. Please check the configuration.');
-            return;
-        }
+    // Ensure IDs are correctly mapped
+    if (!serviceId || !specialistId) {
+      alert('Could not determine service or doctor ID. Please check the configuration.');
+      return;
+    }
 
-        const reviewData = {
-            service_id: serviceId,
-            specialist_id: specialistId,
-            rating: rating,
-            comment: reviewText,
-        };
+    const reviewData = {
+      service_id: serviceId,
+      specialist_id: specialistId,
+      rating: rating,
+      comment: reviewText,
+    };
 
-        // --- Backend Integration Steps ---
+    // --- Backend Integration Steps ---
 
-        // 1. Get the authentication token (if your API requires it)
-        // Based on your LogIn component, 'user-info' might contain the token.
-        // You'll need to parse it and extract the actual token string.
-        let authToken = null;
-        try {
-            const userInfo = JSON.parse(localStorage.getItem('user-info'));
-            // Assuming the token is directly in userInfo or within a 'token' property
-            authToken = userInfo?.token; // Adjust this based on your actual 'user-info' structure
-        } catch (e) {
-            console.error("Error parsing user-info from localStorage:", e);
-        }
+    // 1. Get the authentication token (if your API requires it)
+    // Based on your LogIn component, 'user-info' might contain the token.
+    // You'll need to parse it and extract the actual token string.
+    let authToken = null;
+    try {
+      const userInfo = JSON.parse(localStorage.getItem('user-info'));
+      // Assuming the token is directly in userInfo or within a 'token' property
+      authToken = userInfo?.token; // Adjust this based on your actual 'user-info' structure
+    } catch (e) {
+      console.error("Error parsing user-info from localStorage:", e);
+    }
 
 
         const backendBaseUrl = 'https://vet-clinic-backend.ew.r.appspot.com/';
@@ -129,7 +127,6 @@ const WriteReview = () => {
 
     return (
         <div>
-            <Header/>
             <div className="review-container">
                 <main className="review-main">
                     <h1 className="login-title">Write A Review</h1>
@@ -171,7 +168,6 @@ const WriteReview = () => {
                     <p className="review-required-note">* Indicates a required field</p>
                 </main>
             </div>
-            <Footer/>
         </div>
     );
 };
