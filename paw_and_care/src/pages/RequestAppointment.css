@@ -11,7 +11,7 @@ h3 {
     font-family: Poppins, serif;
     margin-top: 100px;
     text-align: center;
-    margin-left: 400px; /*нужно потом удалить*/
+    /*margin-left: 400px; !*нужно потом удалить*!*/
 }
 
 .form-section {

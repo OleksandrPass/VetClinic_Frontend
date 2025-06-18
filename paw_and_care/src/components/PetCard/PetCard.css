@@ -167,14 +167,13 @@ input {
     transition: all 0.3s ease; /* Smooth transition */
 }
 
-/* Style for input fields when focused (on click) */
 input:focus {
-    border-color: #888; /* Darker grey when focused */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow on focus */
+    border-color: #888;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 input:invalid {
-    border-color: red; /* Red border for invalid input */
+    border-color: red;
 }
 
 .edited-container h3{
@@ -213,9 +212,9 @@ input:invalid {
     border-radius: 50%;
     cursor: pointer;
     position: absolute;
-    top: 20px; /* Align with edit-icon */
-    left: 20px; /* Position it to the left */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    top: 10px;
+    left: 10px;
+    /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
     transition: transform 0.2s ease;
 }
 
@@ -239,8 +238,8 @@ input:invalid {
     border-radius: 50%;
     cursor: pointer;
     position: absolute;
-    top: 20px; /* Align with back-arrow */
-    right: 20px; /* Position it to the right */
+    top: 623px;
+    right: 350px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease;
 }
