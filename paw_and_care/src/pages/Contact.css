@@ -172,11 +172,17 @@
 
 .map-container {
     height: 335px;
-    width: 100vw;
+    width: 100%;
     overflow: hidden;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+.map-container iframe {
+    width: 100vw;
+    /*margin-left: 300px;*/
+    transform: scale(1);
 }
 
 .map-container iframe {

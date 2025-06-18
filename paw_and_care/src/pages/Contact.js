@@ -115,7 +115,7 @@ const ContactPage = () => {
       </div>
       <div className="map-container">
         <iframe
-          src="https://www.bing.com/maps/embed?h=335&w=1200&cp=52.415796~16.928869&lvl=17&typ=d&sty=r&src=SHELL&FORM=MBEDV8"
+          src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2433.492057074316!2d16.929097512515455!3d52.41588144381597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47045b458e6d37f9%3A0x630f1e648e79b67!2sCollegium%20Da%20Vinci!5e0!3m2!1sru!2spl!4v1750205355105!5m2!1sru!2spl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'
           style={{
             border: 0,
             width: '100%',

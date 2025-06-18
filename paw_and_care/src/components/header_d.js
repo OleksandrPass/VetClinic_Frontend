@@ -11,7 +11,7 @@ const SpecialistReceptionistHeader = () => {
     const navigate = useNavigate();
 
     const storedUser = localStorage.getItem("user-info");
-    const user = storedUser ? JSON.parse(storedUser).profile : null;
+
 
     const logout = (e) => {
         e.stopPropagation();
@@ -66,8 +66,8 @@ const SpecialistReceptionistHeader = () => {
                         {open && (
                             <div className="dropdown-menu" onClick={e => e.stopPropagation()}>
                                 <div className="dropdown-header">
-                                    <div className="user-name">{userInfo.name || 'User Name'}</div>
-                                    <div className="user-email">{userInfo.email || 'user@example.com'}</div>
+                                    <div className="user-name">{userInfo.name || 'Doctor O'}</div>
+                                    <div className="user-email">{userInfo.email || 'dr.olivia@example.com'}</div>
                                 </div>
 
                                 <div className="dropdown-divider"></div>
