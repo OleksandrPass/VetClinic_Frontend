@@ -79,6 +79,12 @@ const MedicalRecordPage = () => {
                             ))}
                     </ul>
                 </div>
+                <div className={"prescriptions"}>
+                    <strong>Prescriptions</strong>
+                    <ul>
+                        <li>{medicalRecord.prescriptions?.join(', ' || 'None')}</li>
+                    </ul>
+                </div>
             </div>
 
             <div className="last-updated">

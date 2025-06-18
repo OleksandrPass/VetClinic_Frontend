@@ -25,10 +25,10 @@ const PetDetailsPage = () => {
 
   if (!pet) {
     return (
-      <div>
-        <p>Pet data not available. Please return to the pet list.</p>
-        <button onClick={() => navigate("/profile/pets")}>Go Back</button>
-      </div>
+        <div>
+          <p>Pet data not available. Please return to the pet list.</p>
+          <button onClick={() => navigate("/profile/pets")}>Go Back</button>
+        </div>
     );
   }
 
@@ -37,22 +37,22 @@ const PetDetailsPage = () => {
       const token = JSON.parse(localStorage.getItem('user-info'))?.token;
 
       const response = await fetch(
-        `https://vet-clinic-backend.ew.r.appspot.com/api/user/pets/${pet.id}`,
-        {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            name: editedPet.name,
-            species: editedPet.species,
-            breed: editedPet.breed,
-            age: Number(editedPet.age),
-            gender: editedPet.gender,
-            weight: Number(editedPet.weight)
-          })
-        }
+          `https://vet-clinic-backend.ew.r.appspot.com/api/user/pets/${pet.id}`,
+          {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              name: editedPet.name,
+              species: editedPet.species,
+              breed: editedPet.breed,
+              age: Number(editedPet.age),
+              gender: editedPet.gender,
+              weight: Number(editedPet.weight)
+            })
+          }
       );
 
       if (!response.ok) {
@@ -90,78 +90,78 @@ const PetDetailsPage = () => {
   };
 
   return (
-    <div className="pet-details-page-container">
-      <div className="pet-details-page">
-        <div className="background-container"
-             style={{
-               width: '100%',
-               height: '30vh',
-               backgroundImage: `url(${pet.photoUrl})`,
-               backgroundSize: 'cover',
-               backgroundPosition: 'center',
-               backgroundRepeat: 'no-repeat',
-               position: 'relative',
-             }}>
-          <div className={'back-arrow'} onClick={() => navigate('/profile/pets')}><img src={back_arrow} alt="Go Back" className="back-arrow-icon" /></div>
+      <div className="pet-details-page-container">
+        <div className="pet-details-page">
+          <div className="background-container"
+               style={{
+                 width: '100%',
+                 height: '30vh',
+                 backgroundImage: `url(${pet.photoUrl})`,
+                 backgroundSize: 'cover',
+                 backgroundPosition: 'center',
+                 backgroundRepeat: 'no-repeat',
+                 position: 'relative',
+               }}>
+            {/*<div className={'back-arrow'} onClick={() => navigate('/profile/pets')}><img src={back_arrow} alt="Go Back" className="back-arrow-icon" /></div>*/}
 
-          <img
-            src={edit_image}
-            alt={isEditing ? "Save" : "Edit"}
-            className="edit-icon"
-            onClick={() => setIsEditing(true)}
-            style={{ cursor: 'pointer', width: '40px', position: 'absolute', top: 20, right: 20 }}
-          />
-        </div>
-
-        <div className="pet-details-container">
-          <div className="info-grid">
-            <div className="info-column">
-              <p><strong>Name:</strong><br />
-                {isEditing ? <input name="name" value={editedPet.name} onChange={handleChange} /> : pet.name}
-              </p>
-              <p><strong>Breed:</strong><br />
-                {isEditing ? <input name="breed" value={editedPet.breed} onChange={handleChange} /> : pet.breed}
-              </p>
-              <p><strong>Age:</strong><br />
-                {isEditing ? <input name="age" value={editedPet.age} onChange={handleChange} /> : pet.age}
-              </p>
-            </div>
-
-            <div className="info-column">
-              <p><strong>Species:</strong><br />
-                {isEditing ? <input name="species" value={editedPet.species} onChange={handleChange}/> : pet.species}
-              </p>
-              <p><strong>Gender:</strong><br />
-                {isEditing ? <input name="gender" value={editedPet.gender} onChange={handleChange} /> : pet.gender || 'N/A'}
-              </p>
-              <p><strong>Weight:</strong><br />
-                {isEditing ? <input name="weight" value={editedPet.weight} onChange={handleChange} /> : pet.weight || 'N/A'}
-              </p>
-            </div>
-
-            <div className="info-column">
-              <p><strong>Owner's name:</strong><br />{user?.name}</p>
-              <p><strong>Phone number:</strong><br />{user?.phone || 'N/A'}</p>
-              <p><strong>Email:</strong><br />{user?.email || 'N/A'}</p>
-            </div>
+            <img
+                src={edit_image}
+                alt={isEditing ? "Save" : "Edit"}
+                className="edit-icon"
+                onClick={() => setIsEditing(true)}
+                style={{ cursor: 'pointer', width: '40px', position: 'absolute', top: 20, right: 20 }}
+            />
           </div>
 
-          {isEditing && (
-            <div className="edit-buttons-container">
-              <button onClick={handleSave}>Save</button>
-              <button onClick={handleCancel}>Cancel</button>
-            </div>
-          )}
-        </div>
-      </div>
+          <div className="pet-details-container">
+            <div className="info-grid">
+              <div className="info-column">
+                <p><strong>Name:</strong><br />
+                  {isEditing ? <input name="name" value={editedPet.name} onChange={handleChange} /> : pet.name}
+                </p>
+                <p><strong>Breed:</strong><br />
+                  {isEditing ? <input name="breed" value={editedPet.breed} onChange={handleChange} /> : pet.breed}
+                </p>
+                <p><strong>Age:</strong><br />
+                  {isEditing ? <input name="age" value={editedPet.age} onChange={handleChange} /> : pet.age}
+                </p>
+              </div>
 
-      {showSuccess && (
-        <div className="success-container">
-          <img src={tick} alt="tick-circle" />
-          <h3>Pet details updated successfully!</h3>
+              <div className="info-column">
+                <p><strong>Species:</strong><br />
+                  {isEditing ? <input name="species" value={editedPet.species} onChange={handleChange}/> : pet.species}
+                </p>
+                <p><strong>Gender:</strong><br />
+                  {isEditing ? <input name="gender" value={editedPet.gender} onChange={handleChange} /> : pet.gender || 'N/A'}
+                </p>
+                <p><strong>Weight:</strong><br />
+                  {isEditing ? <input name="weight" value={editedPet.weight} onChange={handleChange} /> : pet.weight || 'N/A'}
+                </p>
+              </div>
+
+              <div className="info-column">
+                <p><strong>Owner's name:</strong><br />{user?.name}</p>
+                <p><strong>Phone number:</strong><br />{user?.phone || 'N/A'}</p>
+                <p><strong>Email:</strong><br />{user?.email || 'N/A'}</p>
+              </div>
+            </div>
+
+            {isEditing && (
+                <div className="edit-buttons-container">
+                  <button onClick={handleSave}>Save</button>
+                  <button onClick={handleCancel}>Cancel</button>
+                </div>
+            )}
+          </div>
         </div>
-      )}
-    </div>
+
+        {showSuccess && (
+            <div className="success-container-pet-details">
+              {/*<img src={tick} alt="tick-circle" />*/}
+              <h3>Pet details updated successfully!</h3>
+            </div>
+        )}
+      </div>
   );
 };
 

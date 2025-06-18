@@ -20,12 +20,14 @@
 }
 
 .about-container h3 {
-    margin-left: 231px;
+    text-align: start;
     font-size: 32px;
     line-height: 40px;
     font-weight: 600;
     font-family: 'Inter', sans-serif;
     color: #000000;
+    margin-left: 231px;
+
 }
 
 .about-container ul {

@@ -1,0 +1,68 @@
+﻿.profile-content-doctor {
+    margin-top: 150px;
+    margin-left: 370px;
+}
+
+.medical-record-container {
+
+}
+
+.prescriptions  {
+    margin-left: 40px;
+}
+
+.med-buttons {
+
+}
+
+.med-buttons button {
+    background-color: #F05508;
+    color: #fff;
+    border: none;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    width: 193px;
+    height: 46px;
+    border-radius: 10px;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: Open Sans, sans-serif;
+}
+
+.med-buttons button:hover {
+    background-color: #F68E5F;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.med-buttons button:active {
+    background-color: #F05508;
+    color: #fff;
+}
+
+.link1 {
+    width: 969px;
+    margin-left: 80px;
+}
+
+.link2 {
+    width: 969px;
+    margin-left: 80px;
+}
+
+.link1 a {
+    margin-left: 169px;
+}
+
+.link2 a {
+    margin-left: 169px;
+}
+
+.green-message {
+    color: #008000;
+    font-size: 20px;
+    margin-left: 569px;
+    margin-top: 10px;
+}

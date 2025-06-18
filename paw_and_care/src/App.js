@@ -31,6 +31,12 @@ import Schedule from "./pages/Schedule";
 import HeaderRouter from "./components/header/headerRouter";
 import VisitsPage from "./pages/Profile/profilePages/VisitsPage";
 import AdminAppointmentRequest from "./pages/AdminAppointmentRequest";
+import {AuthProvider} from "./api/AuthContext";
+import Patients from "./pages/Patients";
+import ScheduleAdmin from "./pages/ScheduleAdmin";
+import PetCardAdmin from "./components/PetCard/PetCardAdmin";
+import PetDetailsPageAdmin from "./pages/Profile/profilePages/PetDetailsPageAdmin";
+import MedicalRecordPageDoctor from "./pages/Profile/profilePages/MedicalRecordPageDoctor";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('user-info'));
@@ -88,6 +94,10 @@ function App() {
             <Route path="visits" element={<VisitsPage />} />
           </Route>
           <Route path="/schedule" element={<Schedule />} />
+          <Route path="/patients" element={<Patients />} />
+          <Route path="/schedule_admin" element={<ScheduleAdmin />} />
+          <Route path={"/patients/pets/:petId"} element={<PetDetailsPageAdmin />} />
+          <Route path={"/patients/pets/:petId/medical-record"} element={<MedicalRecordPageDoctor />} />
 
         </Routes>
         <Footer/>>

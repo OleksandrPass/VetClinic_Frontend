@@ -6,7 +6,7 @@ import AdminHeader from "../header_ad";
 const HeaderRouter = ({ setIsAuthenticated }) => {
     const storedUser = localStorage.getItem("user-info");
     const userInfo = storedUser ? JSON.parse(storedUser) : null;
-    const userType = userInfo?.userType || "guest"; // fallback to 'guest' if undefined
+    const userType = userInfo?.userType || "guest";
 
     if (userType === "admin") {
         return <AdminHeader setIsAuthenticated={setIsAuthenticated} />;

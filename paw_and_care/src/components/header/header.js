@@ -22,8 +22,7 @@ const Header = ({ setIsAuthenticated }) => {
       localStorage.removeItem('user-info');
       localStorage.removeItem('token');
       setIsAuthenticated(false);
-      // Можно также перенаправить пользователя, если это критичная ошибка
-      // navigate('/log-in');
+     
     }
   }
 
@@ -45,6 +44,8 @@ const Header = ({ setIsAuthenticated }) => {
     localStorage.removeItem('token');
     localStorage.removeItem('pets-data');
     localStorage.removeItem('selected-pet-id');
+    localStorage.removeItem('user-profile');
+    localStorage.removeItem('admin-pets-data');
     setIsAuthenticated(false);
     navigate('/log-in');
   };

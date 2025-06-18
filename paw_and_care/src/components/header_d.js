@@ -46,6 +46,12 @@ const SpecialistReceptionistHeader = ({ setIsAuthenticated }) => {
         e.stopPropagation();
         localStorage.removeItem('user-info');
         localStorage.removeItem('token');
+        localStorage.removeItem('pets-data');
+        localStorage.removeItem('selected-pet-id');
+        localStorage.removeItem('user-info');
+        localStorage.removeItem('token');
+        localStorage.removeItem('user-profile');
+        localStorage.removeItem('admin-pets-data');
         setIsAuthenticated(false);
         navigate('/log-in');
     };
