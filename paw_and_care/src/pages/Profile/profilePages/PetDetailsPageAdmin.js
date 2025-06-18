@@ -1,9 +1,10 @@
 ﻿import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
-import '../../../components/PetCard/PetCard.css';
+import './PetDetailsAdmin.css';
 import tick from '../../../assets/SVG/tick-circle.svg';
 import back_arrow from '../../../assets/SVG/left-arrow.svg';
 import edit_image from '../../../assets/SVG/edit_pet_image.svg';
+import logo from '../../../assets/SVG/logo.svg';
 
 const PetDetailsPageAdmin = () => {
     const { petId } = useParams();
@@ -113,9 +114,9 @@ const PetDetailsPageAdmin = () => {
             const token = JSON.parse(localStorage.getItem('user-info'))?.token;
 
             const response = await fetch(
-                `https://vet-clinic-backend.ew.r.appspot.com/api/user/pets/${pet.id}`,
+                `https://vet-clinic-backend.ew.r.appspot.com/api/pets/${pet.id}`,
                 {
-                    method: 'PUT',
+                    method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${token}`,
@@ -158,14 +159,14 @@ const PetDetailsPageAdmin = () => {
 
     return (
         <div className="pet-details-page-container">
-            <div className="pet-details-page">
+            <div className="pet-details-page-admin">
                 <div
                     className="background-container"
                     onClick={handlePhotoClick}
                     style={{
                         width: '100%',
                         height: '30vh',
-                        backgroundImage: `url(${photoUrl})`,
+                        backgroundImage: `url(${photoUrl})` || logo,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
@@ -179,7 +180,7 @@ const PetDetailsPageAdmin = () => {
                         onChange={handlePhotoChange}
                         style={{ display: 'none' }}
                     />
-                    <div className="back-arrow" onClick={() => navigate('/profile/pets')}>
+                    <div className="back-arrow" onClick={() => navigate('/patients/')}>
                         <img src={back_arrow} alt="Go Back" className="back-arrow-icon" />
                     </div>
                     <img
@@ -242,12 +243,19 @@ const PetDetailsPageAdmin = () => {
                             <button onClick={handleCancel}>Cancel</button>
                         </div>
                     )}
+
+
+                </div>
+                <div className={'medical-recs'}>
+                    <button onClick={() => navigate(`/patients/pets/${pet.id}/medical-record`)}>
+                        Medical Recordings
+                    </button>
                 </div>
             </div>
 
             {showSuccess && (
                 <div className="edited-container">
-                    <img src={tick} alt="tick-circle" />
+                    {/*<img src={tick} alt="tick-circle" />*/}
                     <h3>Pet details updated successfully!</h3>
                 </div>
             )}

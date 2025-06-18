@@ -1,0 +1,30 @@
+﻿.pet-details-page-admin {
+    margin-top: 100px;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-left: 0;
+    width: 735px;
+}
+
+.back-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 6px;
+    background-color: white;
+    margin-top: 250px;
+    margin-left: 580px;
+}
+
+.edit-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 460px;
+    right: 600px;
+    width: 32px;
+    height: 32px;
+}

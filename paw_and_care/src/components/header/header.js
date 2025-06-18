@@ -45,6 +45,8 @@ const Header = ({ setIsAuthenticated }) => {
     localStorage.removeItem('token');
     localStorage.removeItem('pets-data');
     localStorage.removeItem('selected-pet-id');
+    localStorage.removeItem('user-profile');
+    localStorage.removeItem('admin-pets-data');
     setIsAuthenticated(false);
     navigate('/log-in');
   };

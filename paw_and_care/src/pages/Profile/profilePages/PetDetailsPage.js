@@ -102,7 +102,7 @@ const PetDetailsPage = () => {
                  backgroundRepeat: 'no-repeat',
                  position: 'relative',
                }}>
-            <div className={'back-arrow'} onClick={() => navigate('/profile/pets')}><img src={back_arrow} alt="Go Back" className="back-arrow-icon" /></div>
+            {/*<div className={'back-arrow'} onClick={() => navigate('/profile/pets')}><img src={back_arrow} alt="Go Back" className="back-arrow-icon" /></div>*/}
 
             <img
                 src={edit_image}
@@ -156,8 +156,8 @@ const PetDetailsPage = () => {
         </div>
 
         {showSuccess && (
-            <div className="success-container">
-              <img src={tick} alt="tick-circle" />
+            <div className="success-container-pet-details">
+              {/*<img src={tick} alt="tick-circle" />*/}
               <h3>Pet details updated successfully!</h3>
             </div>
         )}
