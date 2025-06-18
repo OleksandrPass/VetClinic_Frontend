@@ -1,27 +1,24 @@
-﻿import Header from "../../components/header/header";
-import Footer from "../../components/footer/footer";
-import tick from "../../assets/SVG/tick-circle.svg"
-import "../PasswordRecovery/PasswordRecovery.css"
+﻿import tick from "../../assets/SVG/tick-circle.svg";
+import "./success.css";
 import { Link } from "react-router-dom";
 
 const PageDeletionSuccess = () => {
-
   return (
-    <div>
-
       <div className="content">
-        <div className={"content-container"}>
+        <div className="content-container">
           <img src={tick} alt="tick-circle" />
-          <h3> Your account has been successfully deleted.</h3>
+          <h3>Password reset successful! You can now log in with your new password.</h3>
         </div>
-        <div className={"buttons-container"}>
-          <Link to={"/log-in"} ><button className={"log-in"}>Log In</button></Link>
-          <Link to={"/"}><button className={"back-home"}>Back Home</button></Link>
+        <div className="buttons-container">
+          <Link to={"/log-in"}>
+            <button className="log-in">Log In</button>
+          </Link>
+          <Link to={"/"}>
+            <button className="back-home">Back Home</button>
+          </Link>
         </div>
       </div>
-    </div>
   );
-
 };
 
 export default PageDeletionSuccess;

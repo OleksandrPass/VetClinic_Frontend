@@ -1,28 +1,24 @@
 ﻿import React, { useState, useEffect } from "react";
 import "./SignUp.css";
-// import ReactDOM from "react-dom/client";
-import Header from "../../components/header/header";
-import Footer from "../../components/footer/footer";
 import { Link, useNavigate } from "react-router-dom";
+import getProfile from "../../api/getProfile";
 
 const SignUp = () => {
-
   useEffect(() => {
-    if (localStorage.getItem('user-info')) {
-      navigate('/about-us')
+    if (localStorage.getItem("user-info")) {
+      navigate("/about-us");
     }
   }, []);
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
-  const role ='owner';
-  const [petName, setPetName] = useState('');
-  const [species, setSpecies] = useState('');
-  const [breed, setBreed] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const role = "owner";
+  const [petName, setPetName] = useState("");
+  const [species, setSpecies] = useState("");
+  const [breed, setBreed] = useState("");
   const navigate = useNavigate();
-
 
   const handleSignUp = async () => {
     const data = {
@@ -37,19 +33,22 @@ const SignUp = () => {
     };
 
     try {
-      const response = await fetch('https://vet-clinic-backend.ew.r.appspot.com/api/auth/register', {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-        }
-      });
+      const response = await fetch(
+          "https://vet-clinic-backend.ew.r.appspot.com/api/auth/register",
+          {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+          }
+      );
 
       const result = await response.json();
 
       if (response.ok) {
-        // Registration successful, now log the user in
+        // Registration successful, handle auto-login
         await handleAutoLogin(email, password);
       } else {
         alert("Registration failed: " + result.message);
@@ -60,29 +59,41 @@ const SignUp = () => {
     }
   };
 
-// Automatically log the user in after successful registration
   const handleAutoLogin = async (email, password) => {
     const loginData = {
       email,
-      password
+      password,
     };
 
     try {
-      const response = await fetch('https://vet-clinic-backend.ew.r.appspot.com/api/auth/login', {
-        method: 'POST',
-        body: JSON.stringify(loginData),
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-        }
-      });
+      const response = await fetch(
+          "https://vet-clinic-backend.ew.r.appspot.com/api/auth/login",
+          {
+            method: "POST",
+            body: JSON.stringify(loginData),
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+          }
+      );
 
       const result = await response.json();
 
       if (response.ok) {
-        localStorage.setItem('user-info', JSON.stringify(result));
-        localStorage.setItem('token', result.token); // Save token separately
-        navigate("/about-us");
+        localStorage.setItem("token", result.token);
+
+        // Fetch and store user profile
+        const profile = await getProfile(result.token);
+
+        // Store complete user info, including the profile
+        localStorage.setItem(
+            "user-info",
+            JSON.stringify({ ...result, profile })
+        );
+
+        // Navigate to the appropriate page
+        navigate(getRedirectPath(result.userType));
       } else {
         alert("Login after registration failed: " + result.message);
       }
@@ -92,91 +103,120 @@ const SignUp = () => {
     }
   };
 
+  const getRedirectPath = (userType) => {
+    if (userType === "doctor") {
+      return "/schedule";
+    } else if (userType === "admin") {
+      return "/schedule_admin";
+    } else {
+      return "/about-us";
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     handleSignUp();
   };
 
-
-
-
   return (
-    <div>
-    <div className="signup-container">
-      <main className="signup-main">
-        <h1 className="signup-title">Sign Up</h1>
-        <form className="signup-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Full Name*</label>
-            <input type="text"
-                   value={name}
-                   onChange={(e) => setName(e.target.value)}
-                   required />
-          </div>
-          <div className="form-row">
-            <div className="form-group">
-              <label>Email*</label>
-              <input type="email"
-                     value={email}
-                     onChange={(e) => setEmail(e.target.value)}
-                     required />
-            </div>
-            <div className="form-group">
-              <label>Phone Number</label>
-              <input type="tel"
-                     value={phone}
-                     onChange={(e) => setPhone(e.target.value)}
-                     required/>
-            </div>
-          </div>
-          <div className="form-group">
-            <label>Pet's Name</label>
-            <input type="text"
-                   value={petName}
-                   onChange={(e) => setPetName(e.target.value)}
-                   required/>
-          </div>
-          <div className="form-row">
-            <div className="form-group">
-              <label>Species*</label>
-              <input type="text"
-                     value={species}
-                     onChange={(e) => setSpecies(e.target.value)}
-                     required />
-            </div>
-            <div className="form-group">
-              <label>Breed*</label>
-              <input type="text"
-                     value={breed}
-                     onChange={(e) => setBreed(e.target.value)}
-                     required />
-            </div>
-          </div>
-          <div className="form-group">
-            <label>Password</label>
-            <input type="password"
-                   value={password}
-                   onChange={(e) => setPassword(e.target.value)}
-                   required/>
-          </div>
-          <div className="form-checkbox">
-            <input type="checkbox" required />
-            <span className="checkbox-text">
-             By registering, I acknowledge that I have read and agree to the <a href="#"> Terms of Service</a> and
-              <br/> <a href="#"> Privacy Policy</a>. I consent to the processing of my data as outlined in the <a href="#"> Privacy Policy</a>.
-            </span>
-          </div>
-          <div className="form-actions">
-            <button type="submit" className="submit-btn">Submit</button>
-            <Link to="/log-in"><button type="button" className="login-btn">Log In</button></Link>
-          </div>
-          <p className="required-note">* Indicates a required field</p>
-        </form>
-      </main>
-    </div>
-    </div>
+      <div>
+        <div className="signup-container">
+          <main className="signup-main">
+            <h1 className="signup-title">Sign Up</h1>
+            <form className="signup-form" onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label>Full Name*</label>
+                <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                />
+              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Email*</label>
+                  <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Phone Number</label>
+                  <input
+                      type="tel"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      required
+                  />
+                </div>
+              </div>
+              <div className="form-group">
+                <label>Pet's Name</label>
+                <input
+                    type="text"
+                    value={petName}
+                    onChange={(e) => setPetName(e.target.value)}
+                    required
+                />
+              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Species*</label>
+                  <input
+                      type="text"
+                      value={species}
+                      onChange={(e) => setSpecies(e.target.value)}
+                      required
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Breed*</label>
+                  <input
+                      type="text"
+                      value={breed}
+                      onChange={(e) => setBreed(e.target.value)}
+                      required
+                  />
+                </div>
+              </div>
+              <div className="form-group">
+                <label>Password</label>
+                <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+              </div>
+              <div className="form-checkbox">
+                <input type="checkbox" required />
+                <span className="checkbox-text">
+                By registering, I acknowledge that I have read and agree to the{" "}
+                  <a href="#"> Terms of Service</a> and
+                <br /> <a href="#"> Privacy Policy</a>. I consent to the
+                processing of my data as outlined in the{" "}
+                  <a href="#"> Privacy Policy</a>.
+              </span>
+              </div>
+              <div className="form-actions">
+                <button type="submit" className="submit-btn">
+                  Submit
+                </button>
+                <Link to="/log-in">
+                  <button type="button" className="login-btn">
+                    Log In
+                  </button>
+                </Link>
+              </div>
+              <p className="required-note">* Indicates a required field</p>
+            </form>
+          </main>
+        </div>
+      </div>
   );
-}
+};
 
 export default SignUp;

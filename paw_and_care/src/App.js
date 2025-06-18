@@ -50,7 +50,7 @@ function App() {
           <Route path="/login" element={<LogIn />} />
           <Route path="/sign-up" element={<SignUp/>} />
           <Route path="/password-reset-request" element={<PasswordRecoveryRequest />} />
-          <Route path="/auth/reset-password/:token" element={<PasswordReset />} />
+          <Route path="/auth/reset-password" element={<PasswordReset />} />
           <Route path="/password-reset-success" element={<PasswordRecoverySuccess />} />
           <Route path="/remove-account" element={<AccountDeletion />} />
           <Route path="/remove-account-success" element={<PageDeletionSuccess />} />

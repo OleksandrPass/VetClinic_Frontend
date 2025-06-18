@@ -87,13 +87,14 @@ h2{
 }
 
 .about-us-content h3 {
+    text-align: start;
     font-size: 32px;
     line-height: 20px;
     color: #FFFFFF;
     font-weight: 600;
     font-family: Inter, serif;
     margin-left: 246px;
-    padding-top: 79px;
+    /*padding-top: 79px;*/
 }
 
 .about-us-content p {
@@ -103,10 +104,18 @@ h2{
     font-weight: 400;
     line-height: 28px;
     font-family: Inter, serif;
+    color: #FFFFFF;
 }
 
 .about-us-content button {
     margin-left: 246px;
+    margin-top: 15px;
+    width: 270px;
+    height: 64px;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 600;
+    background: #F05508;
 }
 
 .about-us-img {
@@ -140,6 +149,7 @@ h2{
 }
 
 .trusted-care h3 {
+    text-align: start;
     font-family: Inter, serif;
     font-weight: 700;
     font-size: 32px;
@@ -174,6 +184,7 @@ h2{
 }
 
 .smart-tracking h3 {
+    text-align: start;
     font-family: Inter, serif;
     font-weight: 700;
     font-size: 32px;
@@ -208,13 +219,14 @@ h2{
 }
 
 .all-in-one h3 {
+    text-align: start;
     font-family: Inter, serif;
     font-weight: 700;
     font-size: 32px;
     line-height: 28px;
     color: #086788;
     margin-top: 50px;
-    margin-left: 130px;
+    margin-left: 165px;
 }
 
 .all-in-one p {
