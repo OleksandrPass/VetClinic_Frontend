@@ -1,4 +1,5 @@
 import React, { Profiler } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Main from './pages/Main/Main';
 import Services from './pages/Services/Services';
@@ -18,7 +19,6 @@ import AccountDeletion from "./pages/AccountDeletion/AccountDeletion";
 import PageDeletionSuccess from "./pages/AccountDeletion/PageDeletionSuccess";
 import PetPage from "./pages/Profile/profilePages/PetPage";
 import ProfileLayout from "./Layouts/ProfileLayout";
-import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import PetDetailsPage from "./pages/Profile/profilePages/PetDetailsPage";
 import MedicalRecordPage from "./pages/Profile/profilePages/MedicalRecordPage";
@@ -37,11 +37,25 @@ import PetCardAdmin from "./components/PetCard/PetCardAdmin";
 import PetDetailsPageAdmin from "./pages/Profile/profilePages/PetDetailsPageAdmin";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('user-info'));
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setIsAuthenticated(!!localStorage.getItem('user-info'));
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
+
+
   return (
-      <AuthProvider>
-    <Router>
-      <div>
-        <HeaderRouter/>
+      <Router>
+        <div>
+          <HeaderRouter setIsAuthenticated={setIsAuthenticated} />
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/general-checkups" element={<GeneralCheckUps />} />
@@ -52,8 +66,8 @@ function App() {
           <Route path="/nutrition" element={<NutritionalCounselling />} />
           <Route path="/services" element={<Services />} />
           <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/log-in" element={<LogIn />} />
-          <Route path="/login" element={<LogIn />} />
+          <Route path="/log-in" element={<LogIn setIsAuthenticated={setIsAuthenticated} />} />
+          <Route path="/login" element={<LogIn setIsAuthenticated={setIsAuthenticated} />} />
           <Route path="/sign-up" element={<SignUp/>} />
           <Route path="/password-reset-request" element={<PasswordRecoveryRequest />} />
           <Route path="/auth/reset-password" element={<PasswordReset />} />
@@ -85,7 +99,6 @@ function App() {
         <Footer/>>
       </div>
     </Router>
-        </AuthProvider>
   );
 }
 

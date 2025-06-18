@@ -3,7 +3,7 @@ import './LogIn.css';
 import { Link, useNavigate } from "react-router-dom";
 import getProfile from '../../api/getProfile';
 
-const LogIn = () => {
+const LogIn = ({ setIsAuthenticated }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -23,13 +23,16 @@ const LogIn = () => {
     if (userInfoString) {
       try {
         const userInfo = JSON.parse(userInfoString);
+        setIsAuthenticated(true);
         navigate(getRedirectPath(userInfo.userType));
       } catch (e) {
         console.error("Error parsing user-info from localStorage:", e);
         localStorage.removeItem('user-info');
+        localStorage.removeItem('token');
+        setIsAuthenticated(false);
       }
     }
-  }, [navigate]);
+  }, [navigate, setIsAuthenticated]);
 
   const logIn = async (e) => {
     e.preventDefault();
@@ -53,11 +56,12 @@ const LogIn = () => {
 
       if (response.ok) {
         localStorage.setItem('token', result.token);
-        localStorage.setItem('user-info', JSON.stringify(result));
-        navigate(getRedirectPath(result.userType));
+
         const profile = await getProfile();
         localStorage.setItem('user-info', JSON.stringify({ ...result, profile }));
 
+        setIsAuthenticated(true);
+        navigate(getRedirectPath(result.userType));
       }  else {
         alert("Login failed: " + result.message);
       }

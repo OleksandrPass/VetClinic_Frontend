@@ -1,26 +1,34 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, NavLink } from 'react-router-dom';
 import '../components/header/header.css';
-import logo from '../assets/SVG/logo.svg';
+import logo from '../assets/SVG/logo.svg'; // Make sure this path is correct now
+import AppointmentButton from "./buttons/appointmentButton";
 import default_profile from "../assets/Лендинги/profile_picture.png";
 
-const SpecialistReceptionistHeader = ({ setIsAuthenticated }) => {
+const AdminHeader = ({ setIsAuthenticated }) => {
     const [open, setOpen] = useState(false);
     const dropdownRef = useRef(null);
     const navigate = useNavigate();
 
+    // Universal logic to get user info for display
     const getDisplayUserInfo = () => {
         const storedUserString = localStorage.getItem("user-info");
         if (!storedUserString) return null;
 
         try {
             const parsed = JSON.parse(storedUserString);
-            if (parsed.profile) {
+            // If userType is 'admin' and name/email are directly in the root object
+            if (parsed.userType === 'admin' && (parsed.name || parsed.email)) {
+                return parsed; // Return the root object
+            }
+            // Otherwise, if there's a nested 'profile' (like for regular users, doctors, receptionists)
+            else if (parsed.profile) {
                 return parsed.profile;
             }
+            // Fallback: return the whole parsed object if no specific profile or direct data
             return parsed;
         } catch (e) {
-            console.error("Failed to parse user-info from localStorage in SpecialistReceptionistHeader:", e);
+            console.error("Failed to parse user-info from localStorage in AdminHeader:", e);
             localStorage.removeItem('user-info');
             localStorage.removeItem('token');
             setIsAuthenticated(false);
@@ -28,7 +36,7 @@ const SpecialistReceptionistHeader = ({ setIsAuthenticated }) => {
         }
     };
 
-    const displayUserInfo = getDisplayUserInfo(); // Получаем данные для отображения
+    const displayUserInfo = getDisplayUserInfo(); // Get the data for display
 
     useEffect(() => {
         function handleClickOutside(event) {
@@ -46,6 +54,8 @@ const SpecialistReceptionistHeader = ({ setIsAuthenticated }) => {
         e.stopPropagation();
         localStorage.removeItem('user-info');
         localStorage.removeItem('token');
+        localStorage.removeItem('pets-data');
+        localStorage.removeItem('selected-pet-id');
         setIsAuthenticated(false);
         navigate('/log-in');
     };
@@ -62,18 +72,26 @@ const SpecialistReceptionistHeader = ({ setIsAuthenticated }) => {
                     <Link to="/"><img src={logo} alt="Paw & Care" className="logo" /></Link>
                     <span className="brand-name"><Link to="/">Paw & Care</Link></span>
                 </div>
-                <div className="specialist-buttons-wrapper">
-                    <nav className="nav-links-d">
-                        <NavLink to="/schedule" >Schedule</NavLink>
-                        <NavLink to="/patients" >Patients</NavLink>
+                <div className="links-container">
+                    <nav className="nav-links">
+                        <NavLink to="/schedule_admin">Schedule</NavLink>
+                        <NavLink to="/patients_admin">Patients</NavLink>
+                        <NavLink to="/services">Services</NavLink>
+                        <NavLink to="/contact">Contact</NavLink>
                     </nav>
                 </div>
 
                 <div className="nav-buttons">
+                    {/* Wrapped AppointmentButton in its own container */}
+                    <div className="appointment-button-container">
+                        <AppointmentButton/>
+                    </div>
+
+                    {/* We assume that if this header renders, the admin is already logged in */}
                     {displayUserInfo && ( // Keep this check for robustness, even if routing prevents unauthenticated access
                         <div className="profile-dropdown-container" ref={dropdownRef}>
                             <div className={`profile-container ${open ? 'active' : ''}`} onClick={toggleDropdown}>
-                                <img src={default_profile} className="profile-image" alt={'doctor profile'} />
+                                <img src={default_profile} className="profile-image" alt={'admin profile'} />
                             </div>
 
                             {open && (
@@ -101,4 +119,4 @@ const SpecialistReceptionistHeader = ({ setIsAuthenticated }) => {
     );
 };
 
-export default SpecialistReceptionistHeader;
+export default AdminHeader;
