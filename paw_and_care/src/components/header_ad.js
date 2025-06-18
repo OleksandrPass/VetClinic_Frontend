@@ -72,10 +72,8 @@ const AdminHeader = ({ setIsAuthenticated }) => {
                     <Link to="/"><img src={logo} alt="Paw & Care" className="logo" /></Link>
                     <span className="brand-name"><Link to="/">Paw & Care</Link></span>
                 </div>
-                <div className="links-container">
-                    <nav className="nav-links">
-                        <NavLink to="/schedule_admin">Schedule</NavLink>
-                        <NavLink to="/patients_admin">Patients</NavLink>
+                <div className="links-container-ad">
+                    <nav className="nav-links-ad">
                         <NavLink to="/services">Services</NavLink>
                         <NavLink to="/contact">Contact</NavLink>
                     </nav>
