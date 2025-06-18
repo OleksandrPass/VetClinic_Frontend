@@ -12,7 +12,7 @@ const LogIn = ({ setIsAuthenticated }) => {
     if (userType === 'doctor') {
       return '/schedule';
     } else if (userType === 'admin') {
-      return '/schedule_admin';
+      return '/services';
     } else {
       return '/about-us';
     }

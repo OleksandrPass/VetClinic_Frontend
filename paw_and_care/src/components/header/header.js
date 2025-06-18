@@ -22,8 +22,7 @@ const Header = ({ setIsAuthenticated }) => {
       localStorage.removeItem('user-info');
       localStorage.removeItem('token');
       setIsAuthenticated(false);
-      // Можно также перенаправить пользователя, если это критичная ошибка
-      // navigate('/log-in');
+     
     }
   }
 

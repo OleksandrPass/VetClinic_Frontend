@@ -150,3 +150,17 @@ h3 {
     font-size: 0.85em;
     margin-top: 5px;
 }
+
+/* Styles for AdminAppointmentRequest layout */
+.admin-request-layout-container {
+    display: flex; /* Используем Flexbox для размещения элементов в ряд */
+    flex-wrap: wrap; /* Разрешаем перенос элементов на новую строку на маленьких экранах */
+    justify-content: center; /* Центрируем элементы по горизонтали */
+    gap: 20px; /* Добавляем промежуток между формой и календарем */
+    align-items: flex-start; /* Выравниваем элементы по верху */
+    width: 100%; /* Занимаем всю доступную ширину */
+    max-width: 1200px; /* Ограничиваем максимальную ширину для лучшего вида */
+    margin: 0 auto; /* Центрируем контейнер на странице */
+    padding: 20px; /* Небольшой отступ по краям */
+    box-sizing: border-box; /* Учитываем padding в общей ширине */
+}

@@ -30,6 +30,7 @@ import Contact from "./pages/Contact";
 import Schedule from "./pages/Schedule";
 import HeaderRouter from "./components/header/headerRouter";
 import VisitsPage from "./pages/Profile/profilePages/VisitsPage";
+import AdminAppointmentRequest from "./pages/AdminAppointmentRequest";
 import {AuthProvider} from "./api/AuthContext";
 import Patients from "./pages/Patients";
 import ScheduleAdmin from "./pages/ScheduleAdmin";
@@ -80,7 +81,8 @@ function App() {
           <Route path="/write-a-review" element={<WriteReview />} />
           <Route path="/review-submitted" element={<PageReviewSubmitted />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/appointment-request" element={<RequestAppointment />} />
+          <Route path="/request-appointment" element={<RequestAppointment />} />
+          <Route path="/admin/request-appointment" element={<AdminAppointmentRequest />} />
           <Route path="/request-success" element={<PageRequestSuccess />} />
           <Route path="/write-a-review" element={<WriteReview />} />
           <Route path="/review-submitted" element={<PageReviewSubmitted />} />

@@ -1,0 +1,49 @@
+
+.admin-appointment-page-container {
+    padding: 20px;
+    max-width: 1400px;
+    margin-left: 100px;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+.admin-page-title {
+    font-size: 24px;
+    line-height: 20px;
+    color: #000000;
+    font-weight: 600;
+    font-family: Poppins, serif;
+    margin-top: 100px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.admin-form-calendar-layout {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+
+.admin-form-section {
+    flex: 1 1 500px;
+    max-width: 600px;
+    min-width: 350px;
+    box-sizing: border-box;
+}
+
+.admin-calendar-section {
+    flex: 0 0 350px;
+    max-width: 400px;
+    min-width: 300px;
+    box-sizing: border-box;
+    height: auto;
+    padding: 15px;
+}
+
+
