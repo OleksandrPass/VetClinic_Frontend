@@ -6,26 +6,26 @@ import AppointmentButton from "../buttons/appointmentButton";
 import SignUpButton from "../buttons/signUpButton";
 import default_profile from "../../assets/Лендинги/profile_picture.png";
 
-const Header = () => {
+const Header = ({ setIsAuthenticated }) => {
   const [open, setOpen] = useState(false);
-  const [userInfo, setUserInfo] = useState(null);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
-  const storedUser = localStorage.getItem("user-info");
-  const user = storedUser ? JSON.parse(storedUser).profile : null;
-
-  useEffect(() => {
-    const stored = localStorage.getItem('user-info');
-    if (stored) {
-      try {
-        const parsed = JSON.parse(stored);
-        setUserInfo(parsed?.profile || parsed);
-      } catch (e) {
-        console.error("Failed to parse user-info:", e);
-      }
+  const storedUserString = localStorage.getItem("user-info");
+  let userInfo = null;
+  if (storedUserString) {
+    try {
+      const parsed = JSON.parse(storedUserString);
+      userInfo = parsed.profile || parsed;
+    } catch (e) {
+      console.error("Failed to parse user-info from localStorage:", e);
+      localStorage.removeItem('user-info');
+      localStorage.removeItem('token');
+      setIsAuthenticated(false);
+      // Можно также перенаправить пользователя, если это критичная ошибка
+      // navigate('/log-in');
     }
-  }, []);
+  }
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -45,6 +45,7 @@ const Header = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('pets-data');
     localStorage.removeItem('selected-pet-id');
+    setIsAuthenticated(false);
     navigate('/log-in');
   };
 
@@ -79,9 +80,9 @@ const Header = () => {
               {open && (
                 <div className="dropdown-menu" onClick={e => e.stopPropagation()}>
                   <div className="dropdown-header">
-                    <div className="user-name">{user?.name || 'User Name'}</div>
-                    <div className="user-email">{user?.email || 'user@example.com'}</div>
-                    <div className="user-phone">{user?.phone || '+123 456 789'}</div>
+                    <div className="user-name">{userInfo.name || 'User Name'}</div>
+                    <div className="user-email">{userInfo.email || 'user@example.com'}</div>
+                    <div className="user-phone">{userInfo.phone || '+123 456 789'}</div>
                   </div>
 
                   <div className="dropdown-divider"></div>
