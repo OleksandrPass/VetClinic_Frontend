@@ -56,10 +56,11 @@
     padding: 4px 6px
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
     background-color: #D8F0FF;
     border-radius: 10px;
-    padding: 4px 6px
+    padding: 4px 6px;
 }
 
 .nav-buttons {
@@ -208,4 +209,9 @@
     border-radius: 10px;
     padding: 4px 6px;
 
+}
+.appointment-button-container {
+    margin-left: 70px;
+    display: flex;
+    align-items: center;
 }
