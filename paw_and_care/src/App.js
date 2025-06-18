@@ -29,6 +29,7 @@ import PageReviewSubmitted from "./pages/PageReviewSubmitted";
 import Contact from "./pages/Contact";
 import Schedule from "./pages/Schedule";
 import HeaderRouter from "./components/header/headerRouter";
+import VisitsPage from "./pages/Profile/profilePages/VisitsPage";
 
 function App() {
   return (
@@ -67,6 +68,7 @@ function App() {
             <Route path="pets" element={<PetPage />} />
             <Route path="pets/:petId" element={<PetDetailsPage />} />
             <Route path="pets/:petId/medical-record" element={<MedicalRecordPage />} />
+            <Route path="visits" element={<VisitsPage />} />
           </Route>
           <Route path="/schedule" element={<Schedule />} />
 

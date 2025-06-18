@@ -247,3 +247,33 @@ input:invalid {
     transform: scale(1.1);
 }
 
+.appointment-card {
+    display: grid;
+    width: 360px !important;
+    height: 165px !important;
+    border-radius: 20px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-family: Inter, serif;
+    font-weight: 400;
+    font-size: 20px;
+    background-color: #D9D9D9 !important;
+}
+
+.appointment-card p {
+    /*margin-top: 10px;*/
+    margin-left: 20px;
+    font-size: 16px;
+    line-height: 1px;
+    color: #000000;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(2, 370px); /* 2 cards per row */
+    row-gap: 20px; /* Reduce vertical spacing between rows */
+    column-gap: 20px; /* Keep consistent horizontal spacing */
+    padding: 20px; /* Space around the grid */
+
+}
+

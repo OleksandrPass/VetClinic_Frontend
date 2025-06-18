@@ -1,0 +1,48 @@
+﻿/* Button container */
+.buttons-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Toggle buttons styling */
+.toggle-button {
+    padding: 8px 16px;
+    border: 1px solid #086788;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #086788;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px;
+    transition: background-color 0.2s, color 0.2s;
+    width: 360px;
+    height: 40px;
+}
+
+.toggle-button:hover {
+    background-color: #086788;
+    color: #fff;
+}
+
+.toggle-button.active {
+    background-color: #07A0C3;
+    color: #fff;
+    /*cursor: default;*/
+    border-color: #07A0C3;
+}
+
+.cards-container p {
+    text-align: start;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000000;
+    font-family: 'Inter', sans-serif;
+}
+
+.cards-container {
+    margin-top: 40px;
+    width: 800px;
+    height: 100%;
+    margin-left: 255px;
+
+}
