@@ -43,6 +43,8 @@ const Header = () => {
     e.stopPropagation();
     localStorage.removeItem('user-info');
     localStorage.removeItem('token');
+    localStorage.removeItem('pets-data');
+    localStorage.removeItem('selected-pet-id');
     navigate('/log-in');
   };
 

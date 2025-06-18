@@ -66,7 +66,7 @@ function App() {
           <Route path="/profile" element={<ProfileLayout />}>
             <Route path="pets" element={<PetPage />} />
             <Route path="pets/:petId" element={<PetDetailsPage />} />
-            <Route path="pets/:petId/records" element={<MedicalRecordPage />} />
+            <Route path="pets/:petId/medical-record" element={<MedicalRecordPage />} />
           </Route>
           <Route path="/schedule" element={<Schedule />} />
 

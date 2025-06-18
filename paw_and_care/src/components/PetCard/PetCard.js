@@ -9,6 +9,8 @@ const PetCard = ({ pet, token, onPetUpdated }) => {
   const [formData, setFormData] = useState({ ...pet });
   const [photo, setPhoto] = useState(null);
 
+
+
   const handleChange = (e) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
