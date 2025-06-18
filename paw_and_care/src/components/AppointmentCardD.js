@@ -11,18 +11,20 @@ const AppointmentCardD = ({ appointment }) => {
         status
     } = appointment;
 
+    const normalizedStatus = status ? status.toLowerCase().replace(/ /g, '-') : 'unknown';
+
     let cardClass;
-    if (status === 'Canceled') {
+    if (normalizedStatus === 'canceled') {
         cardClass = 'appointment-card-d canceled';
-    } else if (status === 'Pending') {
+    } else if (normalizedStatus === 'pending') {
         cardClass = 'appointment-card-d pending';
-    } else {
+    } else if (normalizedStatus === 'on-time') {
         cardClass = 'appointment-card-d on-time';
+    } else {
+        cardClass = 'appointment-card-d unknown';
     }
 
     const getServiceReason = (serviceId) => {
-        // ... (ваша логика getServiceReason) ...
-        // Здесь может быть импорт serviceOptions, если он в отдельном файле
         switch(serviceId) {
             case '4bfce486-6dfa-4208-9c07-2cda20baaed9': return 'General Check-ups';
             case 'f47ac10b-58cc-4372-a567-0e02b2c3d479': return 'Vaccinations';
@@ -51,7 +53,7 @@ const AppointmentCardD = ({ appointment }) => {
                 <p className="card-detail">Breed: <span className="card-value">{breed}</span></p>
                 <p className="card-detail">Visit Reason: <span className="card-value">{getServiceReason(service_id)}</span></p>
 
-                <span className={`card-status ${status ? status.toLowerCase().replace(' ', '-') : 'unknown'}`}>
+                <span className={`card-status ${normalizedStatus}`}>
                     {status || 'Unknown'}
                 </span>
             </div>
