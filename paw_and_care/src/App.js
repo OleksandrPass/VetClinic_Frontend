@@ -30,9 +30,15 @@ import Contact from "./pages/Contact";
 import Schedule from "./pages/Schedule";
 import HeaderRouter from "./components/header/headerRouter";
 import VisitsPage from "./pages/Profile/profilePages/VisitsPage";
+import {AuthProvider} from "./api/AuthContext";
+import Patients from "./pages/Patients";
+import ScheduleAdmin from "./pages/ScheduleAdmin";
+import PetCardAdmin from "./components/PetCard/PetCardAdmin";
+import PetDetailsPageAdmin from "./pages/Profile/profilePages/PetDetailsPageAdmin";
 
 function App() {
   return (
+      <AuthProvider>
     <Router>
       <div>
         <HeaderRouter/>
@@ -71,11 +77,15 @@ function App() {
             <Route path="visits" element={<VisitsPage />} />
           </Route>
           <Route path="/schedule" element={<Schedule />} />
+          <Route path="/patients" element={<Patients />} />
+          <Route path="/schedule_admin" element={<ScheduleAdmin />} />
+          <Route path={"/patients/pets/:petId"} element={<PetDetailsPageAdmin />} />
 
         </Routes>
         <Footer/>>
       </div>
     </Router>
+        </AuthProvider>
   );
 }
 

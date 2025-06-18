@@ -177,17 +177,19 @@ input:invalid {
     border-color: red; /* Red border for invalid input */
 }
 
-.success-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.edited-container h3{
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*align-items: center;*/
+    margin-top: 10px;
     justify-content: center;
     font-family: 'Open Sans', 'sans-serif';
     font-size: 16px;
-    color: #3C7248;
     font-weight: 600;
+    color: #3C7248;
     margin-left: 650px;
 }
+
 
 .pet-details-page-container {
     display: flex;
