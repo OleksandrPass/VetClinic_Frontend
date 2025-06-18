@@ -56,10 +56,6 @@ const AdminHeader = ({ setIsAuthenticated }) => {
         localStorage.removeItem('token');
         localStorage.removeItem('pets-data');
         localStorage.removeItem('selected-pet-id');
-        localStorage.removeItem('user-info');
-        localStorage.removeItem('token');
-        localStorage.removeItem('user-profile');
-        localStorage.removeItem('admin-pets-data');
         setIsAuthenticated(false);
         navigate('/log-in');
     };
@@ -78,10 +74,6 @@ const AdminHeader = ({ setIsAuthenticated }) => {
                 </div>
                 <div className="links-container-ad">
                     <nav className="nav-links-ad">
-                <div className="links-container">
-                    <nav className="nav-links">
-                        <NavLink to="/schedule_admin">Schedule</NavLink>
-                        <NavLink to="/patients_admin">Patients</NavLink>
                         <NavLink to="/services">Services</NavLink>
                         <NavLink to="/contact">Contact</NavLink>
                     </nav>
