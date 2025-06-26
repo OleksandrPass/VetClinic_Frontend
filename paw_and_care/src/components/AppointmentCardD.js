@@ -24,6 +24,7 @@ const AppointmentCardD = ({ appointment }) => {
         cardClass = 'appointment-card-d unknown';
     }
 
+
     const getServiceReason = (serviceId) => {
         switch(serviceId) {
             case '4bfce486-6dfa-4208-9c07-2cda20baaed9': return 'General Check-ups';
@@ -53,7 +54,9 @@ const AppointmentCardD = ({ appointment }) => {
                 <p className="card-detail">Breed: <span className="card-value">{breed}</span></p>
                 <p className="card-detail">Visit Reason: <span className="card-value">{getServiceReason(service_id)}</span></p>
 
-                <span className={'card-status ${normalizedStatus}'}>
+
+                <span className={`card-status ${normalizedStatus}`}>
+                <span className={`card-status ${status ? status.toLowerCase().replace(' ', '-') : 'unknown'}`}>
                     {status || 'Unknown'}
                 </span>
             </div>
