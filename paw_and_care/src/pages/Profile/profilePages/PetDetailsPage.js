@@ -1,8 +1,7 @@
 ﻿import { useLocation, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import '../../../components/PetCard/PetCard.css';
 import tick from '../../../assets/SVG/tick-circle.svg';
-import back_arrow from '../../../assets/SVG/left-arrow.svg';
 import edit_image from '../../../assets/SVG/edit_pet_image.svg';
 
 const PetDetailsPage = () => {
@@ -14,6 +13,7 @@ const PetDetailsPage = () => {
 
   const [isEditing, setIsEditing] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [photoUrl, setPhotoUrl] = useState(pet?.photoUrl);
   const [editedPet, setEditedPet] = useState({
     name: pet?.name || '',
     species: pet?.species || '',
@@ -22,6 +22,8 @@ const PetDetailsPage = () => {
     gender: pet?.gender || '',
     weight: pet?.weight || '',
   });
+
+  const fileInputRef = useRef();
 
   if (!pet) {
     return (
@@ -61,7 +63,6 @@ const PetDetailsPage = () => {
 
       setShowSuccess(true);
       setTimeout(() => setShowSuccess(false), 3000);
-
       setIsEditing(false);
     } catch (err) {
       console.error(err);
@@ -78,6 +79,7 @@ const PetDetailsPage = () => {
       gender: pet.gender || '',
       weight: pet.weight || '',
     });
+    setPhotoUrl(pet.photoUrl);
     setIsEditing(false);
   };
 
@@ -89,27 +91,85 @@ const PetDetailsPage = () => {
     }));
   };
 
+  const handlePhotoUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    try {
+      const token = JSON.parse(localStorage.getItem('user-info'))?.token;
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const response = await fetch(
+          `https://vet-clinic-backend.ew.r.appspot.com/api/pets/${pet.id}/photo`,
+          {
+            method: 'POST',
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            body: formData
+          }
+      );
+
+      if (!response.ok) {
+        throw new Error('Failed to upload photo');
+      }
+
+      // Generate a temporary local URL to display the new image
+      const blob = await response.blob();
+      const newPhotoUrl = URL.createObjectURL(blob);
+      setPhotoUrl(newPhotoUrl);
+    } catch (error) {
+      console.error('Photo upload failed:', error);
+      alert('Failed to upload new photo.');
+    }
+  };
+
   return (
       <div className="pet-details-page-container">
         <div className="pet-details-page">
-          <div className="background-container"
-               style={{
-                 width: '100%',
-                 height: '30vh',
-                 backgroundImage: `url(${pet.photoUrl})`,
-                 backgroundSize: 'cover',
-                 backgroundPosition: 'center',
-                 backgroundRepeat: 'no-repeat',
-                 position: 'relative',
-               }}>
-            {/*<div className={'back-arrow'} onClick={() => navigate('/profile/pets')}><img src={back_arrow} alt="Go Back" className="back-arrow-icon" /></div>*/}
+          <div
+              className="background-container"
+              style={{
+                width: '100%',
+                height: '30vh',
+                backgroundImage: `url(${photoUrl})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                position: 'relative',
+                cursor: isEditing ? 'pointer' : 'default',
+              }}
+              onClick={() => {
+                if (isEditing) {
+                  fileInputRef.current.click();
+                }
+              }}
+          >
+            <input
+                type="file"
+                accept="image/*"
+                ref={fileInputRef}
+                style={{ display: 'none' }}
+                onChange={handlePhotoUpload}
+            />
 
             <img
                 src={edit_image}
                 alt={isEditing ? "Save" : "Edit"}
                 className="edit-icon"
-                onClick={() => setIsEditing(true)}
-                style={{ cursor: 'pointer', width: '40px', position: 'absolute', top: 20, right: 20 }}
+                onClick={(e) => {
+                  e.stopPropagation(); // prevent triggering file input
+                  setIsEditing(true);
+                }}
+                style={{
+                  cursor: 'pointer',
+                  width: '40px',
+                  position: 'absolute',
+                  top: 20,
+                  right: 20
+                }}
             />
           </div>
 
@@ -129,7 +189,7 @@ const PetDetailsPage = () => {
 
               <div className="info-column">
                 <p><strong>Species:</strong><br />
-                  {isEditing ? <input name="species" value={editedPet.species} onChange={handleChange}/> : pet.species}
+                  {isEditing ? <input name="species" value={editedPet.species} onChange={handleChange} /> : pet.species}
                 </p>
                 <p><strong>Gender:</strong><br />
                   {isEditing ? <input name="gender" value={editedPet.gender} onChange={handleChange} /> : pet.gender || 'N/A'}
@@ -157,7 +217,6 @@ const PetDetailsPage = () => {
 
         {showSuccess && (
             <div className="success-container-pet-details">
-              {/*<img src={tick} alt="tick-circle" />*/}
               <h3>Pet details updated successfully!</h3>
             </div>
         )}
