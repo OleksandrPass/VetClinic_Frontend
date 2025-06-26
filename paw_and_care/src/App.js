@@ -1,4 +1,5 @@
 import React, { Profiler } from "react";
+import './App.css';
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Main from './pages/Main/Main';
@@ -31,10 +32,8 @@ import Schedule from "./pages/Schedule";
 import HeaderRouter from "./components/header/headerRouter";
 import VisitsPage from "./pages/Profile/profilePages/VisitsPage";
 import AdminAppointmentRequest from "./pages/AdminAppointmentRequest";
-import {AuthProvider} from "./api/AuthContext";
 import Patients from "./pages/Patients";
 import ScheduleAdmin from "./pages/ScheduleAdmin";
-import PetCardAdmin from "./components/PetCard/PetCardAdmin";
 import PetDetailsPageAdmin from "./pages/Profile/profilePages/PetDetailsPageAdmin";
 import MedicalRecordPageDoctor from "./pages/Profile/profilePages/MedicalRecordPageDoctor";
 
@@ -56,7 +55,7 @@ function App() {
 
   return (
       <Router>
-        <div>
+        <div className="App">
           <HeaderRouter setIsAuthenticated={setIsAuthenticated} />
         <Routes>
           <Route path="/" element={<Main />} />
